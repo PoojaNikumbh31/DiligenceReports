@@ -1,0 +1,268 @@
+﻿@model DiligenceReportCreation.Models.SummaryTable
+@{
+    ViewData["Title"] = "DiligenceForm_Page2";
+}
+
+<div class="text-center">
+    <h1>DiligenceForm</h1>
+    @using (Html.BeginForm("Save_Page2", "Diligence", FormMethod.Post))
+    {
+<div class="form-group">
+    <label>Personal Identification :</label> @Html.DropDownList("personal_Identification", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem{Text="Discrepancy Identified",Value="Discrepancy Identified"}})
+    <br />
+    <label>Name and address verification history :</label> @Html.DropDownList("name_add_Ver_History", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem{Text="Discrepancy Identified",Value="Discrepancy Identified"}})
+    <br />
+    <label>Company Directorship & Other Records :</label> @Html.DropDownList("company_Directorship", new List<SelectListItem>{
+new SelectListItem {Text="Records",Value="Records"},new SelectListItem{Text="Discrepancy Identified",Value="Discrepancy Identified"}})
+    <br />
+    @*<label>Regulatory Searches & Verification :</label> @Html.DropDownList("regulatory_searches", new List<SelectListItem>{
+        new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />*@
+    <label>Bankruptcy Filings in Country (as available) :</label> @Html.DropDownList("bankruptcy_filings", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Bankruptcy Filings in Country (Possible Records) :</label> @Html.DropDownList("bankruptcy_filings1", new List<SelectListItem>{
+new SelectListItem {Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"}})
+    <br />
+    <label>Civil Court Litigation Records in Country (as available) :</label> @Html.DropDownList("civil_court_Litigation", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Civil Court Litigation Records in Country (Possible Records) :</label> @Html.DropDownList("civil_court_Litigation1", new List<SelectListItem>{
+new SelectListItem {Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"}})
+    <br />
+    <label>Civil Judgments and Liens (as available) :</label> @Html.DropDownList("civil_judge_Liens", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"},new SelectListItem {Text="N/A",Value="N/A"}})
+    <br />
+    <label>Civil Judgments and Liens (Possible Records) :</label> @Html.DropDownList("civil_judge_Liens1", new List<SelectListItem>{
+new SelectListItem {Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"}})
+    <br />
+    <label>Criminal Records as available in Country :</label> @Html.DropDownList("criminal_records", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"},new SelectListItem {Text="N/A",Value="N/A"}})
+    <br />
+    <label>Criminal Records as available in Country (Possible Records):</label> @Html.DropDownList("criminal_records1", new List<SelectListItem>{
+new SelectListItem {Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"}})
+    <br />
+    <label>News Media Searches :</label> @Html.DropDownList("news_media_searches", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"},new SelectListItem{Text="Potentially-Relevant Information",Value="Potentially-Relevant Information"}})
+    <br />
+    <label>Department of Foreign Affairs and Trade, Australia :</label> @Html.DropDownList("department_foreign", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>European Union Consolidated List of Persons, Groups, Equity :</label> @Html.DropDownList("european_union", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>HM Treasury Consolidated List of Financial Sanctions Targets (formerly Bank of England Sanctions) :</label> @Html.DropDownList("HM_treasury", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>U.S. Bureau of Industry and Security List of Denied Persons, Entities List and Unverified List :</label> @Html.DropDownList("US_bureau", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>U.S. Department of State Foreign Terrorist Organizations :</label> @Html.DropDownList("US_department", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>U.S. Directorate of Defense Trade Controls Debarred Parties Lists :</label> @Html.DropDownList("US_Directorate", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>U.S. General Services Administration Lists of Parties Excluded from Federal Procurement and Non-Procurement Programs :</label> @Html.DropDownList("US_general", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>U.S. Office of Foreign Assets Control :</label> @Html.DropDownList("US_office", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>United Nations Consolidated Sanctions :</label> @Html.DropDownList("UN_consolidated", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>World Bank List of Ineligible Firms and Individuals :</label> @Html.DropDownList("world_bank_list", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>City of London Police (U.K.) :</label> @Html.DropDownList("city_london_police", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Constabularies of Cheshire, Lancashire, and Devon and Cornwall (U.K.) :</label> @Html.DropDownList("constabularies_cheshire", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Hampshire Police (U.K.) :</label> @Html.DropDownList("hampshire_police", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Hong Kong Police Force :</label> @Html.DropDownList("hong_kong_police", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Interpol :</label> @Html.DropDownList("interpol", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Metropolitan Police Service (U.K.) :</label> @Html.DropDownList("metropolitan_police", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>National Crime Squad :</label> @Html.DropDownList("national_crime", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>North Yorkshire Police (U.K.) :</label> @Html.DropDownList("north_yorkshire_polic", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Nottinghamshire Police (U.K.) :</label> @Html.DropDownList("nottinghamshire_police", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Surrey Police (U.K.) :</label> @Html.DropDownList("surrey_police", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Thames Valley Police (U.K.) :</label> @Html.DropDownList("thames_valley_police", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>U.S. Federal Bureau of Investigation :</label> @Html.DropDownList("US_Federal", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>U.S. Secret Service :</label> @Html.DropDownList("US_secret_service", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Warwickshire Police (U.K.) :</label> @Html.DropDownList("warwickshire_police", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Alberta Securities Commission, Canada :</label> @Html.DropDownList("alberta_securities_commission", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Assets Recovery Agency :</label> @Html.DropDownList("asset_recovery_agency", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Australian Prudential Regulation Authority :</label> @Html.DropDownList("australian_prudential", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Australian Securities and Investments :</label> @Html.DropDownList("australian_securities", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Banque de France, CECEI, France :</label> @Html.DropDownList("banque_de_CECEI", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Banque de France, Commission Bancaire, France :</label> @Html.DropDownList("banque_de_commission", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>British Virgin Islands Financial Services Commission :</label> @Html.DropDownList("british_virgin_islands", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Cayman Islands Monetary Authority :</label> @Html.DropDownList("cayman_islands_monetary", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Commission de Surveillance du Secteur Financier, Luxembourg :</label> @Html.DropDownList("commission_de_surveillance", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Commodity Futures Trading Commission :</label> @Html.DropDownList("commodity_futures", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Council for Financial Activities Control, Brazil :</label> @Html.DropDownList("council_financial_activities", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Departamento de Investigacoes Sobre Narcoticos, Brazil :</label> @Html.DropDownList("departamento_de_investigacoes", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Department of Labour Inspection – Combating Forced Labour, Brazil :</label> @Html.DropDownList("department_labour_inspection", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Federal Deposit Insurance Commission :</label> @Html.DropDownList("federal_deposit", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Federal Reserve Board :</label> @Html.DropDownList("federal_reserve", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Financial Action Task Force :</label> @Html.DropDownList("financial_action_task", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Financial Crimes Enforcement Network :</label> @Html.DropDownList("financial_crimes", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Financial Industry Regulatory Authority :</label> @Html.DropDownList("financial_industry", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>International Consortium of Investigative Journalists, Offshore Leaks Database :</label> @Html.DropDownList("international_consortium", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Financial Regulator, Ireland :</label> @Html.DropDownList("financial_regulator_ireland", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Hong Kong Monetary Authority :</label> @Html.DropDownList("hongkong_monetary_authority", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Hong Kong Securities and Futures :</label> @Html.DropDownList("hongkong_securities_futures", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Investment Dealers Association of Canada :</label> @Html.DropDownList("investment_association_Canada", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Investment Management Regulatory :</label> @Html.DropDownList("investment_management_regulatory", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Isle of Man Financial Supervision Commission :</label> @Html.DropDownList("isle_financial_supervision", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Jersey Financial Services Commission :</label> @Html.DropDownList("jersey_financial_commission", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Lloyd’s Insurance Arimbolaet :</label> @Html.DropDownList("lloyd_insurance_arimbolaet", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Monetary Authority of Singapore :</label> @Html.DropDownList("monetary_authority_singapore", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>National Credit Union Administration :</label> @Html.DropDownList("national_credit", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>New York Stock Exchange :</label> @Html.DropDownList("new_york_stock", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Office of the Comptroller of the Currency :</label> @Html.DropDownList("Office_of_comptroller", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Office of the Superintendent of Financial Institutions, Canada :</label> @Html.DropDownList("Office_of_superintendent", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Resolution Trust Corporation :</label> @Html.DropDownList("resolution_trust", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Securities and Exchange Commission, U.S. :</label> @Html.DropDownList("securities_exchange", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Securities and Exchange Commission, Brazil :</label> @Html.DropDownList("securities_exchange_commission", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Securities and Futures Authority :</label> @Html.DropDownList("securities_futuresauthority", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Swedish Financial Supervisory Authority :</label> @Html.DropDownList("swedish_financial_supervisory", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Swiss Federal Banking Commission :</label> @Html.DropDownList("swiss_federal_banking", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>U.K. Companies House Disqualified Directors :</label> @Html.DropDownList("U_K_companies_disqualified", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>U.K. Financial Conduct Authority Regulatory :</label> @Html.DropDownList("U_K_financial_conduct_authority", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>U.S. Court of International Trade :</label> @Html.DropDownList("US_court", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>U.S. Department of Justice :</label> @Html.DropDownList("US_department_justice", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>U.S. Federal Trade Commission :</label> @Html.DropDownList("US_federal_trade", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>U.S. National Futures Association :</label> @Html.DropDownList("US_national", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>U.S. Office of Thrift Supervision :</label> @Html.DropDownList("US_office_thrifts", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>Central Intelligence Agency - Heads of State/Government :</label> @Html.DropDownList("central_intelligence", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <label>International Consortium of Investigative Journalists (ICIJ) :</label> @Html.DropDownList("international_consortium_investigative", new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+    <br />
+    <input type="submit" value="Submit" style="width:auto" />
+</div>
+    }
+
+</div>
+

@@ -1,0 +1,45 @@
+﻿@model DiligenceReportCreation.Models.TemplateSelection
+@{
+    ViewData["Title"] = "TemplateSelection";
+}
+
+<script>
+      
+</script>
+<div class="text-center">
+    <h1>Diligence Reports</h1>
+    @using (Html.BeginForm("TemplateredirectionPage", "Diligence", FormMethod.Post))
+    {
+<div class="form-group">
+    <br />
+    <br />
+    <label>Case Number</label>
+    <input type="text" name="CaseNumber" required="required" />
+    <br />
+    <label>Last Name/Company Name</label>
+    <input type="text" name="LastName" required="required" />
+    <br />
+    <label>Select Template :</label>
+    <select name="templatetype" id="SelectTemplate">
+        <option value="International DD Individual">International DD Individual</option>
+        <option value="International Citizenship Individual">International Citizenship Individual</option>
+        <option value="International Citizenship Family">International Citizenship Family</option>
+        <option value="International PE Individual">International PE Individual</option>
+        <option value="International Company">International Company</option>
+        <option value="US DD Individual">US DD Individual</option>
+        <option value="US PE Individual">US PE Individual</option>
+        <option value="US Company">US Company</option>
+        <option value="US Citizenship Family">US Citizenship Family</option>
+        @*<option value="International DD Individual">International DD Individual</option><option value="US DD Individual">US DD Individual</option><option value="US PE Individual">US PE Individual</option>*@
+    </select>
+        @*<select name="templatetype" id="SelectTemplate"><option value="International DD Individual">International DD Individual</option><option value="International Citizenship Individual">International Citizenship Individual</option><option value="US DD Individual">US DD Individual</option><option value="US PE Individual">US PE Individual</option></select>*@
+    <br />
+
+        <input id="submit" type="submit" name="Submit" value="Create" />
+</div>
+    }
+    @if (!(@TempData["message"] is null))
+    {
+        <p class="alert-danger">@TempData["message"].ToString()</p>
+    }
+</div>

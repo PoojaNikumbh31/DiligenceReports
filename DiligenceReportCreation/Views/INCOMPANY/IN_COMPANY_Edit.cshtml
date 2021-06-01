@@ -1,0 +1,1632 @@
+﻿@model DiligenceReportCreation.Models.MainModel
+@{
+    ViewData["Title"] = "INTL_COMPANY";
+}
+
+<h4>IN_COMPANY_Edit</h4>
+<div class="text-center">
+    <h4> @ViewBag.CaseNumber @ViewBag.LastName</h4>
+    <head>
+        @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        @try
+        {
+            @switch (Model.diligenceInputModel.Country)
+            {
+                case "France":
+                    <script>
+                        $(document).ready(function () {
+                            $("#SelectedUK").hide();
+                            $("#SelectedCanada").hide();
+                            $("#SelectedAus").hide();
+                            $("#SelectedSaudi").hide();
+                            $("#SelectedUnitedArab").hide();
+                            $("#SelectedChina").hide();
+                            $("#SelectedHongKong").hide();
+                            $("#OtherCountries").hide();
+                            $('#SelectedIraq').hide();
+                            $('#SelectedGermany').hide();
+                            $('#SelectedSwitzerland').hide();
+                            $('#SelectedIndia').hide();
+                            $('#SelectedSingapore').hide();
+                            $("#SelectedFrance").show();
+                        });
+                    </script>
+                    break;
+                case "United Kingdom":
+                    <script>
+                        $(document).ready(function () {
+                            $("#SelectedFrance").hide();
+                            $("#SelectedCanada").hide();
+                            $("#SelectedAus").hide();
+                            $("#SelectedSaudi").hide();
+                            $("#SelectedUnitedArab").hide();
+                            $("#SelectedChina").hide();
+                            $("#SelectedHongKong").hide();
+                            $("#OtherCountries").hide();
+                            $('#SelectedIraq').hide();
+                            $('#SelectedGermany').hide();
+                            $('#SelectedSwitzerland').hide();
+                            $('#SelectedIndia').hide();
+                            $('#SelectedSingapore').hide();
+                            $("#SelectedUK").show();
+                        });
+                    </script>
+                    break;
+                case "Canada":
+                    <script>
+                        $(document).ready(function () {
+                            $("#SelectedFrance").hide();
+                            $("#SelectedUK").hide();
+                            $("#SelectedAus").hide();
+                            $("#SelectedSaudi").hide();
+                            $("#SelectedUnitedArab").hide();
+                            $("#SelectedChina").hide();
+                            $("#SelectedHongKong").hide();
+                            $("#OtherCountries").hide();
+                            $('#SelectedIraq').hide();
+                            $('#SelectedGermany').hide();
+                            $('#SelectedSwitzerland').hide();
+                            $('#SelectedIndia').hide();
+                            $('#SelectedSingapore').hide();
+                            $("#SelectedCanada").show();
+                        });
+                    </script>
+                    break;
+                case "Australia":
+                    <script>
+                        $(document).ready(function () {
+                            $("#SelectedFrance").hide();
+                            $("#SelectedUK").hide();
+                            $("#SelectedCanada").hide();
+                            $("#SelectedSaudi").hide();
+                            $("#SelectedUnitedArab").hide();
+                            $("#SelectedChina").hide();
+                            $("#SelectedHongKong").hide();
+                            $("#OtherCountries").hide();
+                            $('#SelectedIraq').hide();
+                            $('#SelectedGermany').hide();
+                            $('#SelectedSwitzerland').hide();
+                            $('#SelectedIndia').hide();
+                            $('#SelectedSingapore').hide();
+                            $("#SelectedAus").show();
+                        });
+                    </script>
+                    break;
+                case "Saudi Arabia":
+                    <script>
+                        $(document).ready(function () {
+                            $("#SelectedFrance").hide();
+                            $("#SelectedUK").hide();
+                            $("#SelectedCanada").hide();
+                            $("#SelectedAus").hide();
+                            $("#SelectedUnitedArab").hide();
+                            $("#SelectedChina").hide();
+                            $("#SelectedHongKong").hide();
+                            $("#OtherCountries").hide();
+                            $('#SelectedIraq').hide();
+                            $('#SelectedGermany').hide();
+                            $('#SelectedSwitzerland').hide();
+                            $('#SelectedIndia').hide();
+                            $('#SelectedSingapore').hide();
+                            $("#SelectedSaudi").show();
+                        });
+                    </script>
+                    break;
+                case "United Arab Emirates":
+                    <script>
+                        $(document).ready(function () {
+                            $("#SelectedFrance").hide();
+                            $("#SelectedUK").hide();
+                            $("#SelectedCanada").hide();
+                            $("#SelectedAus").hide();
+                            $("#SelectedSaudi").hide();
+                            $("#SelectedChina").hide();
+                            $("#SelectedHongKong").hide();
+                            $("#OtherCountries").hide();
+                            $('#SelectedIraq').hide();
+                            $('#SelectedGermany').hide();
+                            $('#SelectedSwitzerland').hide();
+                            $('#SelectedIndia').hide();
+                            $('#SelectedSingapore').hide();
+                            $("#SelectedUnitedArab").show();
+                        });
+                    </script>
+                    break;
+                case "China":
+                    <script>
+                        $(document).ready(function () {
+                            $("#SelectedFrance").hide();
+                            $("#SelectedUK").hide();
+                            $("#SelectedCanada").hide();
+                            $("#SelectedAus").hide();
+                            $("#SelectedSaudi").hide();
+                            $("#SelectedHongKong").hide();
+                            $("#SelectedUnitedArab").hide();
+                            $("#OtherCountries").hide();
+                            $('#SelectedIraq').hide();
+                            $('#SelectedGermany').hide();
+                            $('#SelectedSwitzerland').hide();
+                            $('#SelectedIndia').hide();
+                            $('#SelectedSingapore').hide();
+                            $("#SelectedChina").show();
+                        });
+                    </script>
+                    break;
+                case "Hong Kong SAR":
+                    <script>
+                        $(document).ready(function () {
+                            $("#SelectedFrance").hide();
+                            $("#SelectedUK").hide();
+                            $("#SelectedCanada").hide();
+                            $("#SelectedAus").hide();
+                            $("#SelectedSaudi").hide();
+                            $("#SelectedChina").hide();
+                            $("#SelectedUnitedArab").hide();
+                            $("#OtherCountries").hide();
+                            $('#SelectedIraq').hide();
+                            $('#SelectedGermany').hide();
+                            $('#SelectedSwitzerland').hide();
+                            $('#SelectedIndia').hide();
+                            $('#SelectedSingapore').hide();
+                            $("#SelectedHongKong").show();
+                        });
+                    </script>
+                    break;
+                case "Iraq":
+                    <script>
+                        $(document).ready(function () {
+                            $("#SelectedFrance").hide();
+                            $("#SelectedUK").hide();
+                            $("#SelectedCanada").hide();
+                            $("#SelectedAus").hide();
+                            $("#SelectedSaudi").hide();
+                            $("#SelectedChina").hide();
+                            $("#SelectedUnitedArab").hide();
+                            $("#SelectedHongKong").hide();
+                            $("#OtherCountries").hide();
+                            $('#SelectedGermany').hide();
+                            $('#SelectedSwitzerland').hide();
+                            $('#SelectedIndia').hide();
+                            $('#SelectedSingapore').hide();
+                            $('#SelectedIraq').show();
+                        });
+                    </script>
+                    break;
+                case "Russia":
+                    <script>
+                        $(document).ready(function () {
+                            $("#SelectedFrance").hide();
+                            $("#SelectedUK").hide();
+                            $("#SelectedCanada").hide();
+                            $("#SelectedAus").hide();
+                            $("#SelectedSaudi").hide();
+                            $("#SelectedChina").hide();
+                            $("#SelectedUnitedArab").hide();
+                            $("#SelectedHongKong").hide();
+                            $("#OtherCountries").hide();
+                            $('#SelectedGermany').hide();
+                            $('#SelectedSwitzerland').hide();
+                            $('#SelectedIndia').hide();
+                            $('#SelectedSingapore').hide();
+                            $('#SelectedIraq').show();
+                        });
+                    </script>
+                    break;
+                case "Jordan":
+                    <script>
+                        $(document).ready(function () {
+                            $("#SelectedFrance").hide();
+                            $("#SelectedUK").hide();
+                            $("#SelectedCanada").hide();
+                            $("#SelectedAus").hide();
+                            $("#SelectedSaudi").hide();
+                            $("#SelectedChina").hide();
+                            $("#SelectedUnitedArab").hide();
+                            $("#SelectedHongKong").hide();
+                            $("#OtherCountries").hide();
+                            $('#SelectedGermany').hide();
+                            $('#SelectedSwitzerland').hide();
+                            $('#SelectedIndia').hide();
+                            $('#SelectedSingapore').hide();
+                            $('#SelectedIraq').show();
+                        });
+                    </script>
+                    break;
+                case "Qatar":
+                    <script>
+                        $(document).ready(function () {
+                            $("#SelectedFrance").hide();
+                            $("#SelectedUK").hide();
+                            $("#SelectedCanada").hide();
+                            $("#SelectedAus").hide();
+                            $("#SelectedSaudi").hide();
+                            $("#SelectedChina").hide();
+                            $("#SelectedUnitedArab").hide();
+                            $("#SelectedHongKong").hide();
+                            $("#OtherCountries").hide();
+                            $('#SelectedGermany').hide();
+                            $('#SelectedSwitzerland').hide();
+                            $('#SelectedIndia').hide();
+                            $('#SelectedSingapore').hide();
+                            $('#SelectedIraq').show();
+                        });
+                    </script>
+                    break;
+                case "Lebanon":
+                    <script>
+                        $(document).ready(function () {
+                            $("#SelectedFrance").hide();
+                            $("#SelectedUK").hide();
+                            $("#SelectedCanada").hide();
+                            $("#SelectedAus").hide();
+                            $("#SelectedSaudi").hide();
+                            $("#SelectedChina").hide();
+                            $("#SelectedUnitedArab").hide();
+                            $("#SelectedHongKong").hide();
+                            $("#OtherCountries").hide();
+                            $('#SelectedGermany').hide();
+                            $('#SelectedSwitzerland').hide();
+                            $('#SelectedIndia').hide();
+                            $('#SelectedSingapore').hide();
+                            $('#SelectedIraq').show();
+                        });
+                    </script>
+                    break;
+                case "Singapore":
+                    <script>
+                        $(document).ready(function () {
+                            $("#SelectedFrance").hide();
+                            $("#SelectedUK").hide();
+                            $("#SelectedCanada").hide();
+                            $("#SelectedAus").hide();
+                            $("#SelectedSaudi").hide();
+                            $("#SelectedChina").hide();
+                            $("#SelectedUnitedArab").hide();
+                            $("#SelectedHongKong").hide();
+                            $("#OtherCountries").hide();
+                            $('#SelectedGermany').hide();
+                            $('#SelectedSwitzerland').hide();
+                            $('#SelectedIndia').hide();
+                            $('#SelectedIraq').hide();
+                            $('#SelectedSingapore').show();
+                        });
+                    </script>
+                    break;
+                case "Germany":
+                    <script>
+                        $(document).ready(function () {
+                            $("#SelectedFrance").hide();
+                            $("#SelectedUK").hide();
+                            $("#SelectedCanada").hide();
+                            $("#SelectedAus").hide();
+                            $("#SelectedSaudi").hide();
+                            $("#SelectedChina").hide();
+                            $("#SelectedUnitedArab").hide();
+                            $("#SelectedHongKong").hide();
+                            $("#OtherCountries").hide();
+                            $('#SelectedIraq').hide();
+                            $('#SelectedSwitzerland').hide();
+                            $('#SelectedIndia').hide();
+                            $('#SelectedSingapore').hide();
+                            $('#SelectedGermany').show();
+                        });
+                    </script>
+                    break;
+                case "Switzerland":
+                    <script>
+                        $(document).ready(function () {
+                            $("#SelectedFrance").hide();
+                            $("#SelectedUK").hide();
+                            $("#SelectedCanada").hide();
+                            $("#SelectedAus").hide();
+                            $("#SelectedSaudi").hide();
+                            $("#SelectedChina").hide();
+                            $("#SelectedUnitedArab").hide();
+                            $("#SelectedHongKong").hide();
+                            $("#OtherCountries").hide();
+                            $('#SelectedIraq').hide();
+                            $('#SelectedGermany').hide();
+                            $('#SelectedIndia').hide();
+                            $('#SelectedSingapore').hide();
+                            $('#SelectedSwitzerland').show();
+                        });
+                    </script>
+                    break;
+                case "India":
+                    <script>
+                        $(document).ready(function () {
+                            $("#SelectedFrance").hide();
+                            $("#SelectedUK").hide();
+                            $("#SelectedCanada").hide();
+                            $("#SelectedAus").hide();
+                            $("#SelectedSaudi").hide();
+                            $("#SelectedChina").hide();
+                            $("#SelectedUnitedArab").hide();
+                            $("#SelectedHongKong").hide();
+                            $("#OtherCountries").hide();
+                            $('#SelectedIraq').hide();
+                            $('#SelectedSwitzerland').hide();
+                            $('#SelectedGermany').hide();
+                            $('#SelectedSingapore').hide();
+                            $('#SelectedIndia').show();
+                        });
+                    </script>
+                    break;
+                default:
+                    <script>
+                        $(document).ready(function () {
+                            $("#SelectedFrance").hide();
+                            $("#SelectedUK").hide();
+                            $("#SelectedCanada").hide();
+                            $("#SelectedAus").hide();
+                            $("#SelectedSaudi").hide();
+                            $("#SelectedUnitedArab").hide();
+                            $("#SelectedChina").hide();
+                            $("#SelectedHongKong").hide();
+                            $('#SelectedIraq').hide();
+                            $('#SelectedGermany').hide();
+                            $('#SelectedSwitzerland').hide();
+                            $('#SelectedIndia').hide();
+                            $('#SelectedSingapore').hide();
+                            $("#OtherCountries").show();
+                        });
+                    </script>
+                    //alert("Select appropriate Country")
+                    break;
+            }
+        }
+        catch
+        {
+            <script>
+                $(document).ready(function () {
+                    $("#SelectedFrance").hide();
+                    $("#SelectedUK").hide();
+                    $("#SelectedCanada").hide();
+                    $("#SelectedAus").hide();
+                    $("#SelectedSaudi").hide();
+                    $("#SelectedUnitedArab").hide();
+                    $("#SelectedChina").hide();
+                    $("#SelectedHongKong").hide();
+                    $('#SelectedIraq').hide();
+                    $('#SelectedGermany').hide();
+                    $('#SelectedSwitzerland').hide();
+                    $('#SelectedIndia').hide();
+                    $('#SelectedSingapore').hide();
+                    $("#OtherCountries").show();
+                });
+            </script>
+        }
+    </head>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="PIID">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse1">Company Info</a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <label>
+                            All fields with an asterisk (*) are required before you can "Submit Data" to create a report. The final report will reflect the information as it was entered here. Please be sure to double check spelling and use the correct capitalization/punctionation when entering data.
+                        </label>
+                        <table style="border-collapse: separate; border-spacing: 10px;">
+                            <tr>
+                                <th>Common name subject :</th>
+                                <td>@Html.CheckBoxFor(model => model.diligenceInputModel.CommonNameSubject)</td>
+                            </tr>
+                            <tr>
+                                <th>Client Name<span style="color:black"> *</span></th>
+                                <td>
+                                    @Html.EditorFor(model => model.diligenceInputModel.ClientName)
+                                    @Html.ValidationMessageFor(model => model.diligenceInputModel.ClientName)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Case Number</th>
+                                <td>
+                                    @ViewBag.CaseNumber
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Full Entity Name </th>
+                                <td>
+                                    @ViewBag.LastName
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Short Entity Name</th>
+                                <td>
+                                    @Html.EditorFor(model => model.diligenceInputModel.FullaliasName)
+                                    @Html.ValidationMessageFor(model => model.diligenceInputModel.FullaliasName)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Subject name in foreign language :</th>
+                                <td>
+                                    @Html.EditorFor(model => model.diligenceInputModel.foreignlanguage)
+                                    @Html.ValidationMessageFor(model => model.diligenceInputModel.foreignlanguage)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Incorporation Date </th>
+                                <td>
+                                    @Html.TextBoxFor(model => model.diligenceInputModel.Dob, "{0:yyyy-MM}", new { @class = "form-control", type = "month" })
+                                    @Html.ValidationMessageFor(model => model.diligenceInputModel.Dob)
+                                </td>
+                            </tr>
+                            @*<tr>
+            <th>Place of Birth</th>
+            <td>
+                @Html.EditorFor(model => model.diligenceInputModel.Pob)
+                @Html.ValidationMessageFor(model => model.diligenceInputModel.Pob)
+            </td>
+        </tr>*@
+
+                            @*<tr>
+            <th>@Html.LabelFor(model => model.diligenceInputModel.City, new { @class = "control-label col-md-2" })</th>
+            <td>
+                @Html.EditorFor(model => model.diligenceInputModel.City)
+                @Html.ValidationMessageFor(model => model.diligenceInputModel.City)
+            </td>
+        </tr>
+        <tr>
+            <th>Country :</th>
+            <td>
+                @Html.DropDownListFor(model => model.diligenceInputModel.Country, new SelectList(ViewBag.CountryList), new { @onchange = "callChangefunc(this.value)" })
+                @Html.ValidationMessageFor(model => model.diligenceInputModel.Country)
+            </td>
+        </tr>*@
+
+                            <tr>
+                                <th>Business Street Address and Suite No.</th>
+                                <td>
+                                    @Html.EditorFor(model => model.diligenceInputModel.CurrentStreet)
+                                    @Html.ValidationMessageFor(model => model.diligenceInputModel.CurrentStreet)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Entity City</th>
+                                <td>
+                                    @Html.EditorFor(model => model.diligenceInputModel.CurrentCity)
+                                    @Html.ValidationMessageFor(model => model.diligenceInputModel.CurrentCity)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Entity Country</th>
+                                <td>
+                                    @*@Html.EditorFor(model => model.diligenceInputModel.CurrentCountry)
+                @Html.ValidationMessageFor(model => model.diligenceInputModel.CurrentCountry)*@
+
+                                    @Html.DropDownListFor(model => model.diligenceInputModel.CurrentCountry, new SelectList(ViewBag.CountryList), new { @onchange = "callChangefunc(this.value)" })
+                                    @Html.ValidationMessageFor(model => model.diligenceInputModel.CurrentCountry)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Business Address Zip Code</th>
+                                <td>
+                                    @Html.EditorFor(model => model.diligenceInputModel.CurrentZipcode)
+                                    @Html.ValidationMessageFor(model => model.diligenceInputModel.CurrentZipcode)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Nonscope Countries</th>
+                                <td>
+                                    @Html.EditorFor(model => model.diligenceInputModel.Nonscopecountry1)
+                                    @Html.ValidationMessageFor(model => model.diligenceInputModel.Nonscopecountry1)
+                                </td>
+                            </tr>
+                        </table>
+                        <input type="submit" name="SaveData" value="SavePIData" onclick="callpichange()" />
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" id="ODID">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse2">Other details</a>
+                    </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <table style="border-collapse: separate; border-spacing: 10px;">
+                            <tr>
+                                <th>Has Companion Report? :</th>
+                                <td>
+                                    @Html.DropDownListFor(model => model.otherdetails.Has_Companion_Report, new List<SelectListItem>{
+                                    new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"}})
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Business Affiliations Identified? :</th>
+                                <td>
+                                    @Html.DropDownListFor(model => model.otherdetails.Has_Business_Affiliations, new List<SelectListItem>{
+                                    new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"}})
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Intellectual Property Identified? :</th>
+                                <td>
+                                    @Html.DropDownListFor(model => model.otherdetails.Has_Intellectual_Hits, new List<SelectListItem>{
+                                     new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"}})
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Registered with U.S. SEC? :</th>
+                                <td>
+                                    @Html.DropDownListFor(model => model.otherdetails.Has_Reg_US_SEC, new List<SelectListItem>{
+                                    new SelectListItem{Text="Not Registered",Value="Not Registered"},new SelectListItem {Text="Yes-With Adverse",Value="Yes-With Adverse"},new SelectListItem{Text="Yes-Without Adverse",Value="Yes-Without Adverse"}})
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Registered with U.K. FCA? :</th>
+                                <td>
+                                    @Html.DropDownListFor(model => model.otherdetails.Has_Reg_UK_FCA, new List<SelectListItem>{
+                                   new SelectListItem{Text="Not Registered",Value="Not Registered"},new SelectListItem {Text="Yes-With Adverse",Value="Yes-With Adverse"},new SelectListItem{Text="Yes-Without Adverse",Value="Yes-Without Adverse"}})
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Registered with FINRA? :</th>
+                                <td>
+                                    @Html.DropDownListFor(model => model.otherdetails.Has_Reg_FINRA, new List<SelectListItem>{
+                                     new SelectListItem{Text="Not Registered",Value="Not Registered"},new SelectListItem {Text="Yes-With Adverse",Value="Yes-With Adverse"},new SelectListItem{Text="Yes-Without Adverse",Value="Yes-Without Adverse"}})
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Registered with U.S. NFA? :</th>
+                                <td>
+                                    @Html.DropDownListFor(model => model.otherdetails.Has_Reg_US_NFA, new List<SelectListItem>{
+                                    new SelectListItem{Text="Not Registered",Value="Not Registered"},new SelectListItem {Text="Yes-With Adverse",Value="Yes-With Adverse"},new SelectListItem{Text="Yes-Without Adverse",Value="Yes-Without Adverse"}})
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Registered with HKSFC? :</th>
+                                <td>
+                                    @Html.DropDownListFor(model => model.otherdetails.Registered_with_HKSFC, new List<SelectListItem>{
+                  new SelectListItem{Text="Not Registered",Value="Not Registered"},new SelectListItem {Text="Yes-With Adverse",Value="Yes-With Adverse"},new SelectListItem{Text="Yes-Without Adverse",Value="Yes-Without Adverse"}})
+                                    @Html.ValidationMessageFor(model => model.csModel.registeredwithhksfc)
+                                </td>
+                            </tr>
+                            <tr>
+                                @*<label>Holds Any License? :</label> @Html.DropDownList("HoldsAnyLicense", new List<SelectListItem>{
+                                    new SelectListItem {Text="Yes",Value="Yes"},new SelectListItem{Text="No",Value="No"}})
+                                        <br />*@
+                                <th>Any Regulatory Red Flags? :</th>
+                                <td>
+                                    @Html.DropDownListFor(model => model.otherdetails.RegulatoryFlag, new List<SelectListItem>{
+                                    new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"},new SelectListItem {Text="No – Medical",Value="No – Medical"}})
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Has Media-Based Legal Records Hits? :</th>
+                                <td>
+                                    @Html.DropDownListFor(model => model.otherdetails.Media_Based_Hits, new List<SelectListItem>{
+                            new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"}})
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Has U.S. Legal Records Hits? :</th>
+                                <td>
+                                    @Html.DropDownListFor(model => model.otherdetails.USLegal_Record_Hits, new List<SelectListItem>{
+                            new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"},new SelectListItem{Text="Common Name(Too Many Hits)",Value="Common Name(Too Many Hits)"}})
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Has Global Security Hits? :</th>
+                                <td>
+                                    @Html.DropDownListFor(model => model.otherdetails.Global_Security_Hits, new List<SelectListItem>{
+                                new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"}})
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Has ICIJ Hits? :</th>
+                                <td>
+                                    @Html.DropDownListFor(model => model.otherdetails.ICIJ_Hits, new List<SelectListItem>{
+                                new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"}})
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Press and Media :</th>
+                                <td>
+                                    @Html.DropDownListFor(model => model.otherdetails.Press_Media, new List<SelectListItem>{
+                                new SelectListItem{Text="No Hits",Value="No Hits"},new SelectListItem {Text="Common name with adverse Hits",Value="Common name with adverse Hits"},new SelectListItem{Text="Common name without adverse Hits",Value="Common name without adverse Hits"},new SelectListItem{Text="High volume with adverse Hits",Value="High volume with adverse Hits"},new SelectListItem{Text="High volume without adverse Hits",Value="High volume without adverse Hits"},new SelectListItem{Text="Standard search with adverse Hits",Value="Standard search with adverse Hits"},new SelectListItem{Text="Standard search without adverse Hits",Value="Standard search without adverse Hits"}})
+                                </td>
+                            </tr>
+                        </table>
+                        <input type="submit" name="SaveData" value="SaveOD" />
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" id="PLID">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse5">PLLicense details</a>
+                    </h4>
+                </div>
+                <div id="collapse5" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <label>
+                            All fields with an asterisk (*) are required before you can "Submit Data" to create a report. The final report will reflect the information as it was entered here. Please be sure to double check spelling and use the correct capitalization/punctionation when entering data.
+                        </label>
+                        <table id="PLLicense" class="table">
+                            <thead>
+                                <tr>
+                                    <th>Has General Professional License</th>
+                                    <th>Professional License Type<span style="color:black"> *</span></th>
+                                    <th>PL Organization<span style="color:black"> *</span></th>
+                                    <th>PL Location</th>
+                                    <th>PL Number</th>
+                                    <th>PL Start Date</th>
+                                    <th>PL End Date</th>
+                                    <th>PL Confirmed</th>
+                                    <td>&nbsp;</td>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align:left">
+                                @try
+                                {
+                                    @for (int i = 0; i < Model.pllicenseModels.Count; i++)
+                                    {
+
+                                        <tr>
+                                            <td>
+                                                @Html.DropDownListFor(model => model.pllicenseModels[i].General_PL_License, new List<SelectListItem>{
+                     new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                                @Html.ValidationMessageFor(model => model.pllicenseModels[i].General_PL_License)
+                                            </td>
+                                            <td>
+                                                @Html.EditorFor(model => model.pllicenseModels[i].PL_License_Type)
+                                                @Html.ValidationMessageFor(model => model.pllicenseModels[i].PL_License_Type)
+                                            </td>
+                                            <td>
+                                                @Html.EditorFor(model => model.pllicenseModels[i].PL_Organization)
+                                                @Html.ValidationMessageFor(model => model.pllicenseModels[i].PL_Organization)
+                                            </td>
+                                            <td>
+                                                @Html.EditorFor(model => model.pllicenseModels[i].PL_Location)
+                                                @Html.ValidationMessageFor(model => model.pllicenseModels[i].PL_Location)
+                                            </td>
+                                            <td>
+                                                @Html.EditorFor(model => model.pllicenseModels[i].PL_Number)
+                                                @Html.ValidationMessageFor(model => model.pllicenseModels[i].PL_Number)
+                                            </td>
+                                            <td>
+                                                @Html.DropDownListFor(model => model.pllicenseModels[i].PL_StartDateMonth, new List<SelectListItem>{
+                  new SelectListItem {Text="Month",Value="0"},new SelectListItem{Text="Jan",Value="January"},new SelectListItem{ Text="Feb",Value="February"}
+                                           ,new SelectListItem{ Text="Mar",Value="March"},new SelectListItem{ Text="Apr",Value="April"},new SelectListItem{ Text="May",Value="May"},new SelectListItem{ Text="Jun",Value="June"}
+                                           ,new SelectListItem{ Text="Jul",Value="July"},new SelectListItem{ Text="Aug",Value="August"},new SelectListItem{ Text="Sep",Value="September"},new SelectListItem{ Text="Oct",Value="October"}
+                                           ,new SelectListItem{ Text="Nov",Value="November"},new SelectListItem{ Text="Dec",Value="December"}})
+                                                @Html.ValidationMessageFor(model => model.pllicenseModels[i].PL_StartDateMonth)
+
+                                                @Html.DropDownListFor(model => model.pllicenseModels[i].PL_StartDateDay, new List<SelectListItem> {
+                                             new SelectListItem { Text = "Day", Value = "Day" }, new SelectListItem { Text = "1", Value = "1" }, new SelectListItem { Text = "2", Value = "2" }, new SelectListItem { Text = "3", Value = "3" }
+                                           , new SelectListItem { Text = "4", Value = "4" }, new SelectListItem { Text = "5", Value = "5" }, new SelectListItem { Text = "6", Value = "6" }, new SelectListItem { Text = "7", Value = "7" }
+                                           , new SelectListItem { Text = "8", Value = "8" }, new SelectListItem { Text = "9", Value = "9" }, new SelectListItem { Text = "10", Value = "10" }, new SelectListItem { Text = "11", Value = "11" }, new SelectListItem { Text = "12", Value = "12" }
+                                           , new SelectListItem { Text = "13", Value = "13" }, new SelectListItem { Text = "14", Value = "14" }, new SelectListItem { Text = "15", Value = "15" }, new SelectListItem { Text = "16", Value = "16" }
+                                           , new SelectListItem { Text = "17", Value = "17" }, new SelectListItem { Text = "18", Value = "18" }, new SelectListItem { Text = "19", Value = "19" }, new SelectListItem { Text = "20", Value = "20" }
+                                           , new SelectListItem { Text = "21", Value = "21" }, new SelectListItem { Text = "22", Value = "22" }, new SelectListItem { Text = "23", Value = "23" }, new SelectListItem { Text = "24", Value = "24" }
+                                           , new SelectListItem { Text = "25", Value = "25" }, new SelectListItem { Text = "26", Value = "26" }, new SelectListItem { Text = "27", Value = "27" }, new SelectListItem { Text = "28", Value = "28" }
+                                           , new SelectListItem { Text = "29", Value = "29" }, new SelectListItem { Text = "30", Value = "30" }, new SelectListItem { Text = "31", Value = "31" }})
+
+                                                @Html.TextBoxFor(model => model.pllicenseModels[i].PL_StartDateYear, new { placeholder = "Year" })
+                                            </td>
+                                            <td>
+                                                @Html.DropDownListFor(model => model.pllicenseModels[i].PL_EndDateMonth, new List<SelectListItem>{
+                 new SelectListItem {Text="Month",Value="0"},new SelectListItem{Text="Jan",Value="January"},new SelectListItem{ Text="Feb",Value="February"}
+                                          ,new SelectListItem{ Text="Mar",Value="March"},new SelectListItem{ Text="Apr",Value="April"},new SelectListItem{ Text="May",Value="May"},new SelectListItem{ Text="Jun",Value="June"}
+                                          ,new SelectListItem{ Text="Jul",Value="July"},new SelectListItem{ Text="Aug",Value="August"},new SelectListItem{ Text="Sep",Value="September"},new SelectListItem{ Text="Oct",Value="October"}
+                                          ,new SelectListItem{ Text="Nov",Value="November"},new SelectListItem{ Text="Dec",Value="December"}})
+                                                @Html.ValidationMessageFor(model => model.pllicenseModels[i].PL_EndDateMonth)
+
+                                                @Html.DropDownListFor(model => model.pllicenseModels[i].PL_EndDateDay, new List<SelectListItem> {
+                                             new SelectListItem { Text = "Day", Value = "Day" }, new SelectListItem { Text = "1", Value = "1" }, new SelectListItem { Text = "2", Value = "2" }, new SelectListItem { Text = "3", Value = "3" }
+                                           , new SelectListItem { Text = "4", Value = "4" }, new SelectListItem { Text = "5", Value = "5" }, new SelectListItem { Text = "6", Value = "6" }, new SelectListItem { Text = "7", Value = "7" }
+                                           , new SelectListItem { Text = "8", Value = "8" }, new SelectListItem { Text = "9", Value = "9" }, new SelectListItem { Text = "10", Value = "10" }, new SelectListItem { Text = "11", Value = "11" }, new SelectListItem { Text = "12", Value = "12" }
+                                           , new SelectListItem { Text = "13", Value = "13" }, new SelectListItem { Text = "14", Value = "14" }, new SelectListItem { Text = "15", Value = "15" }, new SelectListItem { Text = "16", Value = "16" }
+                                           , new SelectListItem { Text = "17", Value = "17" }, new SelectListItem { Text = "18", Value = "18" }, new SelectListItem { Text = "19", Value = "19" }, new SelectListItem { Text = "20", Value = "20" }
+                                           , new SelectListItem { Text = "21", Value = "21" }, new SelectListItem { Text = "22", Value = "22" }, new SelectListItem { Text = "23", Value = "23" }, new SelectListItem { Text = "24", Value = "24" }
+                                           , new SelectListItem { Text = "25", Value = "25" }, new SelectListItem { Text = "26", Value = "26" }, new SelectListItem { Text = "27", Value = "27" }, new SelectListItem { Text = "28", Value = "28" }
+                                           , new SelectListItem { Text = "29", Value = "29" }, new SelectListItem { Text = "30", Value = "30" }, new SelectListItem { Text = "31", Value = "31" }})
+
+                                                @Html.TextBoxFor(model => model.pllicenseModels[i].PL_EndDateYear, new { placeholder = "Year" })
+                                            </td>
+                                            <td>
+                                                @Html.DropDownListFor(model => model.pllicenseModels[i].PL_Confirmed, new List<SelectListItem>{
+                    new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"},new SelectListItem{ Text="Result Pending",Value="Result Pending"}})
+                                                @Html.ValidationMessageFor(model => model.pllicenseModels[i].PL_Confirmed)
+                                            </td>
+                                            <td>
+                                                <input type="submit" name="SaveData" value='Delete_PL_@Model.pllicenseModels[i].id' />
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                catch { }
+                            </tbody>
+                        </table>
+                        <table id="PLLicense1" class="table">
+                            <tr>
+                                <td>
+                                    <select name="diligence.plLicenseList[0].General_PL_License" id="General_PL_License" class="General_PL_License"><option value="No">No</option><option value="Yes">Yes</option></select>
+                                </td>
+                                <td>
+                                    <input type="text" id="PL_License_Type" name="diligence.plLicenseList[0].PL_License_Type" value="" />
+                                </td>
+                                <td>
+                                    <input type="text" id="PL_Organization" name="diligence.plLicenseList[0].PL_Organization" value="" />
+                                </td>
+                                <td>
+                                    <input type="text" id="PL_Location" name="diligence.plLicenseList[0].PL_Location" value="" />
+                                </td>
+                                <td>
+                                    <input type="text" id="PL_Number" name="diligence.plLicenseList[0].PL_Number" value="" />
+                                </td>
+                                <td>
+                                    <select name="diligence.plLicenseList[0].PL_StartDateMonth" id="PLStartMonth">
+                                        <option value="0">Month</option>
+                                        <option value="January">Jan</option>
+                                        <option value="February">Feb</option>
+                                        <option value="March">Mar</option>
+                                        <option value="April">Apr</option>
+                                        <option value="May">May</option>
+                                        <option value="June">Jun</option>
+                                        <option value="July">Jul</option>
+                                        <option value="August">Aug</option>
+                                        <option value="September">Sep</option>
+                                        <option value="October">Oct</option>
+                                        <option value="November">Nov</option>
+                                        <option value="December">Dec</option>
+                                    </select>
+                                    <select name="diligence.plLicenseList[0].PL_StartDateDay" id="SdayPL" onfocus="PLDayFunction('SdayPL')">
+                                        <option value="Day">Day</option>
+                                    </select>
+                                    <select name="diligence.plLicenseList[0].PL_StartDateYear" id="SyearPL" onfocus="PLyearfunction('SyearPL')">
+                                        <option value="Year">Year</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="diligence.plLicenseList[0].PL_EndDateMonth" id="PLMonth">
+                                        <option value="0">Month</option>
+                                        <option value="January">Jan</option>
+                                        <option value="February">Feb</option>
+                                        <option value="March">Mar</option>
+                                        <option value="April">Apr</option>
+                                        <option value="May">May</option>
+                                        <option value="June">Jun</option>
+                                        <option value="July">Jul</option>
+                                        <option value="August">Aug</option>
+                                        <option value="September">Sep</option>
+                                        <option value="October">Oct</option>
+                                        <option value="November">Nov</option>
+                                        <option value="December">Dec</option>
+                                    </select>
+
+                                    <select name="diligence.plLicenseList[0].PL_EndDateDay" id="EdayPL" onfocus="PLDayFunction('EdayPL')">
+                                        <option value="Day">Day</option>
+                                    </select>
+
+                                    <select name="diligence.plLicenseList[0].PL_EndDateYear" id="EyearPL" onfocus="PLyearfunction('EyearPL')">
+                                        <option value="Year">Year</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select id="PL_Confirmed" name="diligence.plLicenseList[0].PL_Confirmed"><option value="Yes">Yes</option><option value="No">No</option><option value="Result Pending">Result Pending</option></select>
+                                </td>
+                                <td>
+                                    <input type="button" id="AddPLButton" value="  Add " class="Add" onclick="addPL()" style="width:auto" />
+                                </td>
+                            </tr>
+
+                            <script type="text/javascript">
+                                var k;
+                                k = 1;
+                                var m = 10000;
+                                var a = 100000;
+                                var b = 1000000;
+                                var l = 10000000;
+                                function addPL() {
+                                    var myrow = "<tr id='mainrow'><td><select id='General_PL_License' name=plLicenseList[" + k + "].General_PL_License'><option value='Yes'>Yes</option></select></td><td><input type='text' id='PL_License_Type' name='diligence.plLicenseList[" + k + "].PL_License_Type' value='' /></td><td><input type='text' id='PL_Organization' name='diligence.plLicenseList[" + k + "].PL_Organization' value='' /></td><td><input type='text' id='PL_Location' name='diligence.plLicenseList[" + k + "].PL_Location' value='' /></td><td><input type='text' id='PL_Number' name='diligence.plLicenseList[" + k + "].PL_Number' value='' /></td><td><select name='diligence.plLicenseList[" + k + "].PL_StartDateMonth' id=''><option value='0'>Month</option><option value='January'>Jan</option><option value='February'>Feb</option><option value='March'>Mar</option><option value='April'>Apr</option><option value='May'>May</option><option value='June'>Jun</option><option value='July'>Jul</option><option value='August'>Aug</option><option value='September'>Sep</option><option value='October'>Oct</option><option value='November'>Nov</option><option value='December'>Dec</option></select><select name='diligence.plLicenseList[" + k + "].PL_StartDateDay' id=" + m + "  onfocus='PLDayFunction(" + m + ")'><option value='Day'>Day</option></select><select name='diligence.plLicenseList[" + k + "].PL_StartDateYear' id=" + a + "  onfocus='PLyearfunction(" + a + ")'><option value='Year'>Year</option></select></td><td><select name='diligence.plLicenseList[" + k + "].PL_EndDateMonth' id=''><option value='0'>Month</option><option value='January'>Jan</option><option value='February'>Feb</option><option value='March'>Mar</option><option value='April'>Apr</option><option value='May'>May</option><option value='June'>Jun</option><option value='July'>Jul</option><option value='August'>Aug</option><option value='September'>Sep</option><option value='October'>Oct</option><option value='November'>Nov</option><option value='December'>Dec</option></select><select name='diligence.plLicenseList[" + k + "].PL_EndDateDay' id=" + b + " onfocus='PLDayFunction(" + b + ")'><option value='Day'>Day</option></select><select name='diligence.plLicenseList[" + k + "].PL_EndDateYear' id=" + l + " onfocus='PLyearfunction(" + l + ")'><option value='Year'>Year</option></select></td><td><select id='PL_Confirmed' name='diligence.plLicenseList[" + k + "].PL_Confirmed'><option value='Yes'>Yes</option><option value='No'>No</option><option value='Result Pending'>Result Pending</option></select></td><td><input type='button' id='Add' value='  Delete ' onclick='RemovePLRows(this)' style='width:auto' /></td></tr>";
+                                    $("#PLLicense1").last().append(myrow);
+                                    k = k + 1;
+                                    a = a - 1;
+                                    b = b + 1;
+                                    l = l - 1;
+                                    m = m + 1;
+                                }
+                                function RemovePLRows(td) {
+                                    var row = $(td).closest("tr"); // find <tr> parent
+                                    row.remove();
+                                }
+
+                                function PLyearfunction(YID) {
+                                    for (y = 2030; y >= 1940; y--) {
+                                        var optn = document.createElement("OPTION");
+                                        optn.text = y;
+                                        optn.value = y;
+                                        //var av= $(td).options.add(optn);
+                                        document.getElementById(YID).options.add(optn);
+                                    }
+                                }
+                                function PLDayFunction(DID) {
+
+                                    for (y = 1; y <= 31; y++) {
+                                        var optn = document.createElement("OPTION");
+                                        optn.text = y;
+                                        optn.value = y;
+                                        document.getElementById(DID).options.add(optn);
+                                    }
+                                }
+                            </script>
+
+                        </table>
+                        <input type="submit" name="SaveData" value="SavePLData" />
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" id="CSID">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse6">Country Specific info</a>
+                    </h4>
+                </div>
+                <div id="collapse6" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        @*@try{*@
+                        <label>Country</label>
+                        @Html.DropDownListFor(model => model.diligenceInputModel.Country, new SelectList(ViewBag.CountryList), new { @onchange = "callChangefunc(this.value)" })
+                        @Html.ValidationMessageFor(model => model.diligenceInputModel.Country)
+                        <div id="SelectedFrance">
+                            <table style="border-collapse: separate; border-spacing: 20px;">
+                                <tr>
+                                    <th>Has France-specific regulatory hits? :</th>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.csModel.country_specific_reg_hits, new List<SelectListItem>{
+                                new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                        @Html.ValidationMessageFor(model => model.csModel.country_specific_reg_hits)
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <div id="SelectedUK">
+                            <table style="border-collapse: separate; border-spacing: 20px;">
+                                
+                                <tr>
+                                    <th>
+                                        Has Insolvency Hits? :
+                                    </th>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.csModel.insolvency_hits, new List<SelectListItem>{
+                                     new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Has Civil Record Hits? :
+                                    </th>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.csModel.civil_record_hits, new List<SelectListItem>{
+                                     new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Has Registry Trust Hits? :
+                                    </th>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.csModel.reg_trust_hits, new List<SelectListItem>{
+                                     new SelectListItem{ Text="N/A",Value="N/A"},new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                    </td>
+                                </tr>
+                               
+                                
+                            </table>
+                        </div>
+                        <div id="SelectedCanada">
+                            <table style="border-collapse: separate; border-spacing: 20px;">
+                               
+                                <tr>
+                                    <th>
+                                        Has Canada-specific regulatory hits? :
+                                    </th>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.csModel.country_specific_reg_hits, new List<SelectListItem>{
+                                     new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Has Insolvency Hits? :
+                                    </th>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.csModel.insolvency_hits, new List<SelectListItem>{
+                                     new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Has Civil Records Hits? :
+                                    </th>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.csModel.civil_record_hits, new List<SelectListItem>{
+                                     new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                    </td>
+                                </tr>                              
+                                <tr>
+                                    <th>
+                                        Has PPR Records Hits? :
+                                    </th>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.csModel.pprrecordhits, new List<SelectListItem>{
+                                     new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="SelectedAus">
+                            <table style="border-collapse: separate; border-spacing: 20px;">
+                               
+                                <tr>
+                                    <th>
+                                        Has ASIC registration? :
+                                    </th>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.csModel.country_specific_reg_hits, new List<SelectListItem>{
+                                     new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Has Insolvency Hits? :
+                                    </th>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.csModel.insolvency_hits, new List<SelectListItem>{
+                                    new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Has Civil Records Hits? :
+                                    </th>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.csModel.civil_record_hits, new List<SelectListItem>{
+                                     new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                    </td>
+                                </tr>
+                               
+                                <tr>
+                                    <th>
+                                        Has PPSR Records Hits? :
+                                    </th>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.csModel.pprrecordhits, new List<SelectListItem>{
+                                     new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="SelectedSaudi">
+                            <table style="border-collapse: separate; border-spacing: 20px;">
+                            </table>
+                        </div>
+                       
+                        <div id="SelectedChina">
+                            <table style="border-collapse: separate; border-spacing: 20px;">
+                            </table>
+                        </div>
+                        <div id="SelectedHongKong">
+                            <table style="border-collapse: separate; border-spacing: 20px;">
+                            </table>
+                        </div>
+                        <div id="OtherCountries">
+                            <table style="border-collapse: separate; border-spacing: 20px;">
+                                <tr>
+                                    <th>Has Country-specific regulatory hits? :</th>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.csModel.country_specific_reg_hits, new List<SelectListItem>{
+                            new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                    </td>
+                                </tr>
+
+                             
+                            </table>
+                        </div>
+                        <div id="SelectedIraq">
+                            <table style="border-collapse: separate; border-spacing: 20px;">
+                            </table>
+                        </div>
+                        <div id="SelectedGermany">
+                            <table style="border-collapse: separate; border-spacing: 20px;">
+                                <tr>
+                                    <th>Has Country-specific regulatory hits? :</th>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.csModel.country_specific_reg_hits, new List<SelectListItem>{
+                            new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Regulatory Searches :</th>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.csModel.germany_regsearches, new List<SelectListItem>{
+                            new SelectListItem {Text="BaFin without Hits",Value="BaFin without Hits"},new SelectListItem{Text="BaFin with Hits",Value="BaFin with Hits"}})
+                                    </td>
+                                </tr>
+
+                                
+                            </table>
+                        </div>
+                        <div id="SelectedSwitzerland">
+                            <table style="border-collapse: separate; border-spacing: 20px;">
+                                <tr>
+                                    <th>Has Country-specific regulatory hits? :</th>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.csModel.country_specific_reg_hits, new List<SelectListItem>{
+                            new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                    </td>
+                                </tr>                                
+                            </table>
+                        </div>
+                        <div id="SelectedIndia">
+                            <table style="border-collapse: separate; border-spacing: 20px;">
+                                <tr>
+                                    <th>Has Country-specific regulatory hits? :</th>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.csModel.country_specific_reg_hits, new List<SelectListItem>{
+                            new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Corp Registry :</th>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.csModel.india_corpregistry, new List<SelectListItem>{
+                            new SelectListItem {Text="Does not Have Business Affiliations",Value="Does not Have Business Affiliations"},new SelectListItem{Text="Has Business Affiliations",Value="Has Business Affiliations"}})
+                                    </td>
+                                </tr>
+
+                               
+                            </table>
+                        </div>
+                        <div id="SelectedSingapore">
+                            <table style="border-collapse: separate; border-spacing: 20px;">
+                                <tr>
+                                    <th>Has Country-specific regulatory hits? :</th>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.csModel.country_specific_reg_hits, new List<SelectListItem>{
+                            new SelectListItem {Text="",Value=""},new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <script>
+                            function callChangefunc(val) {
+                                switch (val) {
+                                    case "France":
+                                        $("#SelectedUK").hide();
+                                        $("#SelectedCanada").hide();
+                                        $("#SelectedAus").hide();
+                                        $("#SelectedSaudi").hide();
+                                        $("#SelectedUnitedArab").hide();
+                                        $("#SelectedChina").hide();
+                                        $("#SelectedHongKong").hide();
+                                        $("#OtherCountries").hide();
+                                        $('#SelectedIraq').hide();
+                                        $('#SelectedGermany').hide();
+                                        $('#SelectedSwitzerland').hide();
+                                        $('#SelectedIndia').hide();
+                                        $('#SelectedSingapore').hide();
+                                        $("#SelectedFrance").show();
+                                        break;
+                                    case "United Kingdom":
+                                        $("#SelectedFrance").hide();
+                                        $("#SelectedCanada").hide();
+                                        $("#SelectedAus").hide();
+                                        $("#SelectedSaudi").hide();
+                                        $("#SelectedUnitedArab").hide();
+                                        $("#SelectedChina").hide();
+                                        $("#SelectedHongKong").hide();
+                                        $("#OtherCountries").hide();
+                                        $('#SelectedIraq').hide();
+                                        $('#SelectedGermany').hide();
+                                        $('#SelectedSwitzerland').hide();
+                                        $('#SelectedIndia').hide();
+                                        $('#SelectedSingapore').hide();
+                                        $("#SelectedUK").show();
+                                        break;
+                                    case "Canada":
+                                        $("#SelectedFrance").hide();
+                                        $("#SelectedUK").hide();
+                                        $("#SelectedAus").hide();
+                                        $("#SelectedSaudi").hide();
+                                        $("#SelectedUnitedArab").hide();
+                                        $("#SelectedChina").hide();
+                                        $("#SelectedHongKong").hide();
+                                        $("#OtherCountries").hide();
+                                        $('#SelectedIraq').hide();
+                                        $('#SelectedGermany').hide();
+                                        $('#SelectedSwitzerland').hide();
+                                        $('#SelectedIndia').hide();
+                                        $('#SelectedSingapore').hide();
+                                        $("#SelectedCanada").show();
+                                        break;
+                                    case "Australia":
+                                        $("#SelectedFrance").hide();
+                                        $("#SelectedUK").hide();
+                                        $("#SelectedCanada").hide();
+                                        $("#SelectedSaudi").hide();
+                                        $("#SelectedUnitedArab").hide();
+                                        $("#SelectedChina").hide();
+                                        $("#SelectedHongKong").hide();
+                                        $("#OtherCountries").hide();
+                                        $('#SelectedIraq').hide();
+                                        $('#SelectedGermany').hide();
+                                        $('#SelectedSwitzerland').hide();
+                                        $('#SelectedIndia').hide();
+                                        $('#SelectedSingapore').hide();
+                                        $("#SelectedAus").show();
+                                        break;
+                                    case "Saudi Arabia":
+                                        $("#SelectedFrance").hide();
+                                        $("#SelectedUK").hide();
+                                        $("#SelectedCanada").hide();
+                                        $("#SelectedAus").hide();
+                                        $("#SelectedUnitedArab").hide();
+                                        $("#SelectedChina").hide();
+                                        $("#SelectedHongKong").hide();
+                                        $("#OtherCountries").hide();
+                                        $('#SelectedIraq').hide();
+                                        $('#SelectedGermany').hide();
+                                        $('#SelectedSwitzerland').hide();
+                                        $('#SelectedIndia').hide();
+                                        $('#SelectedSingapore').hide();
+                                        $("#SelectedSaudi").show();
+                                        break;
+                                    case "United Arab Emirates":
+                                        $("#SelectedFrance").hide();
+                                        $("#SelectedUK").hide();
+                                        $("#SelectedCanada").hide();
+                                        $("#SelectedAus").hide();
+                                        $("#SelectedSaudi").hide();
+                                        $("#SelectedChina").hide();
+                                        $("#SelectedHongKong").hide();
+                                        $("#OtherCountries").hide();
+                                        $('#SelectedIraq').hide();
+                                        $('#SelectedGermany').hide();
+                                        $('#SelectedSwitzerland').hide();
+                                        $('#SelectedIndia').hide();
+                                        $('#SelectedSingapore').hide();
+                                        $("#SelectedUnitedArab").show();
+                                        break;
+                                    case "China":
+                                        $("#SelectedFrance").hide();
+                                        $("#SelectedUK").hide();
+                                        $("#SelectedCanada").hide();
+                                        $("#SelectedAus").hide();
+                                        $("#SelectedSaudi").hide();
+                                        $("#SelectedHongKong").hide();
+                                        $("#SelectedUnitedArab").hide();
+                                        $("#OtherCountries").hide();
+                                        $('#SelectedIraq').hide();
+                                        $('#SelectedGermany').hide();
+                                        $('#SelectedSwitzerland').hide();
+                                        $('#SelectedIndia').hide();
+                                        $('#SelectedSingapore').hide();
+                                        $("#SelectedChina").show();
+                                        break;
+                                    case "Hong Kong SAR":
+                                        $("#SelectedFrance").hide();
+                                        $("#SelectedUK").hide();
+                                        $("#SelectedCanada").hide();
+                                        $("#SelectedAus").hide();
+                                        $("#SelectedSaudi").hide();
+                                        $("#SelectedChina").hide();
+                                        $("#SelectedUnitedArab").hide();
+                                        $("#OtherCountries").hide();
+                                        $('#SelectedIraq').hide();
+                                        $('#SelectedGermany').hide();
+                                        $('#SelectedSwitzerland').hide();
+                                        $('#SelectedIndia').hide();
+                                        $('#SelectedSingapore').hide();
+                                        $("#SelectedHongKong").show();
+                                        break;
+                                    case "Iraq":
+                                        $("#SelectedFrance").hide();
+                                        $("#SelectedUK").hide();
+                                        $("#SelectedCanada").hide();
+                                        $("#SelectedAus").hide();
+                                        $("#SelectedSaudi").hide();
+                                        $("#SelectedChina").hide();
+                                        $("#SelectedUnitedArab").hide();
+                                        $("#SelectedHongKong").hide();
+                                        $("#OtherCountries").hide();
+                                        $('#SelectedGermany').hide();
+                                        $('#SelectedSwitzerland').hide();
+                                        $('#SelectedIndia').hide();
+                                        $('#SelectedSingapore').hide();
+                                        $('#SelectedIraq').show();
+                                        break;
+                                    case "Russia":
+                                        $("#SelectedFrance").hide();
+                                        $("#SelectedUK").hide();
+                                        $("#SelectedCanada").hide();
+                                        $("#SelectedAus").hide();
+                                        $("#SelectedSaudi").hide();
+                                        $("#SelectedChina").hide();
+                                        $("#SelectedUnitedArab").hide();
+                                        $("#SelectedHongKong").hide();
+                                        $("#OtherCountries").hide();
+                                        $('#SelectedGermany').hide();
+                                        $('#SelectedSwitzerland').hide();
+                                        $('#SelectedIndia').hide();
+                                        $('#SelectedSingapore').hide();
+                                        $('#SelectedIraq').show();
+                                        break;
+                                    case "Jordan":
+                                        $("#SelectedFrance").hide();
+                                        $("#SelectedUK").hide();
+                                        $("#SelectedCanada").hide();
+                                        $("#SelectedAus").hide();
+                                        $("#SelectedSaudi").hide();
+                                        $("#SelectedChina").hide();
+                                        $("#SelectedUnitedArab").hide();
+                                        $("#SelectedHongKong").hide();
+                                        $("#OtherCountries").hide();
+                                        $('#SelectedGermany').hide();
+                                        $('#SelectedSwitzerland').hide();
+                                        $('#SelectedIndia').hide();
+                                        $('#SelectedSingapore').hide();
+                                        $('#SelectedIraq').show();
+                                        break;
+                                    case "Qatar":
+                                        $("#SelectedFrance").hide();
+                                        $("#SelectedUK").hide();
+                                        $("#SelectedCanada").hide();
+                                        $("#SelectedAus").hide();
+                                        $("#SelectedSaudi").hide();
+                                        $("#SelectedChina").hide();
+                                        $("#SelectedUnitedArab").hide();
+                                        $("#SelectedHongKong").hide();
+                                        $("#OtherCountries").hide();
+                                        $('#SelectedGermany').hide();
+                                        $('#SelectedSwitzerland').hide();
+                                        $('#SelectedIndia').hide();
+                                        $('#SelectedSingapore').hide();
+                                        $('#SelectedIraq').show();
+                                        break;
+                                    case "Lebanon":
+                                        $("#SelectedFrance").hide();
+                                        $("#SelectedUK").hide();
+                                        $("#SelectedCanada").hide();
+                                        $("#SelectedAus").hide();
+                                        $("#SelectedSaudi").hide();
+                                        $("#SelectedChina").hide();
+                                        $("#SelectedUnitedArab").hide();
+                                        $("#SelectedHongKong").hide();
+                                        $("#OtherCountries").hide();
+                                        $('#SelectedGermany').hide();
+                                        $('#SelectedSwitzerland').hide();
+                                        $('#SelectedIndia').hide();
+                                        $('#SelectedSingapore').hide();
+                                        $('#SelectedIraq').show();
+                                        break;
+                                    case "Singapore":
+                                        $("#SelectedFrance").hide();
+                                        $("#SelectedUK").hide();
+                                        $("#SelectedCanada").hide();
+                                        $("#SelectedAus").hide();
+                                        $("#SelectedSaudi").hide();
+                                        $("#SelectedChina").hide();
+                                        $("#SelectedUnitedArab").hide();
+                                        $("#SelectedHongKong").hide();
+                                        $("#OtherCountries").hide();
+                                        $('#SelectedGermany').hide();
+                                        $('#SelectedSwitzerland').hide();
+                                        $('#SelectedIndia').hide();
+                                        $('#SelectedIraq').hide();
+                                        $('#SelectedSingapore').show();
+                                        break;
+                                    case "Germany":
+                                        $("#SelectedFrance").hide();
+                                        $("#SelectedUK").hide();
+                                        $("#SelectedCanada").hide();
+                                        $("#SelectedAus").hide();
+                                        $("#SelectedSaudi").hide();
+                                        $("#SelectedChina").hide();
+                                        $("#SelectedUnitedArab").hide();
+                                        $("#SelectedHongKong").hide();
+                                        $("#OtherCountries").hide();
+                                        $('#SelectedIraq').hide();
+                                        $('#SelectedSwitzerland').hide();
+                                        $('#SelectedIndia').hide();
+                                        $('#SelectedSingapore').hide();
+                                        $('#SelectedGermany').show();
+                                        break;
+                                    case "Switzerland":
+                                        $("#SelectedFrance").hide();
+                                        $("#SelectedUK").hide();
+                                        $("#SelectedCanada").hide();
+                                        $("#SelectedAus").hide();
+                                        $("#SelectedSaudi").hide();
+                                        $("#SelectedChina").hide();
+                                        $("#SelectedUnitedArab").hide();
+                                        $("#SelectedHongKong").hide();
+                                        $("#OtherCountries").hide();
+                                        $('#SelectedIraq').hide();
+                                        $('#SelectedGermany').hide();
+                                        $('#SelectedIndia').hide();
+                                        $('#SelectedSingapore').hide();
+                                        $('#SelectedSwitzerland').show();
+                                        break;
+                                    case "India":
+                                        $("#SelectedFrance").hide();
+                                        $("#SelectedUK").hide();
+                                        $("#SelectedCanada").hide();
+                                        $("#SelectedAus").hide();
+                                        $("#SelectedSaudi").hide();
+                                        $("#SelectedChina").hide();
+                                        $("#SelectedUnitedArab").hide();
+                                        $("#SelectedHongKong").hide();
+                                        $("#OtherCountries").hide();
+                                        $('#SelectedIraq').hide();
+                                        $('#SelectedSwitzerland').hide();
+                                        $('#SelectedGermany').hide();
+                                        $('#SelectedSingapore').hide();
+                                        $('#SelectedIndia').show();
+                                        break;
+                                    default:
+                                        $("#SelectedFrance").hide();
+                                        $("#SelectedUK").hide();
+                                        $("#SelectedCanada").hide();
+                                        $("#SelectedAus").hide();
+                                        $("#SelectedSaudi").hide();
+                                        $("#SelectedUnitedArab").hide();
+                                        $("#SelectedChina").hide();
+                                        $("#SelectedHongKong").hide();
+                                        $('#SelectedIraq').hide();
+                                        $('#SelectedGermany').hide();
+                                        $('#SelectedSwitzerland').hide();
+                                        $('#SelectedIndia').hide();
+                                        $('#SelectedSingapore').hide();
+                                        $("#OtherCountries").show();
+                                        //alert("Select appropriate Country")
+                                        break;
+                                }
+                            }
+                        </script>
+                        <input type="submit" name="SaveData" value="SaveCSData" />
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse7">Summary Result Table</a>
+                    </h4>
+                </div>
+                <div id="collapse7" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <label>Corporate Identification Profile :</label> @Html.DropDownListFor(model => model.summarymodel.personal_Identification, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem{Text="Discrepancy Identified",Value="Discrepancy Identified"}})
+                        <br />
+                        <label>Bankruptcy Filings in Country (as available) :</label> @Html.DropDownListFor(model => model.summarymodel.bankruptcy_filings, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Record",Value="Record"},new SelectListItem {Text="Records",Value="Records"},new SelectListItem {Text="Results Pending",Value="Results Pending"}})
+                        <label> Possible records :</label>
+                        @Html.CheckBoxFor(model => model.summarymodel.bankruptcy_filings1)
+                        <br />
+                        <label>Civil Court Litigation Records in Country (as available) :</label> @Html.DropDownListFor(model => model.summarymodel.civil_court_Litigation, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Record",Value="Record"},new SelectListItem {Text="Records",Value="Records"},new SelectListItem {Text="Results Pending",Value="Results Pending"}})
+                        <label> Possible records :</label>
+                        @Html.CheckBoxFor(model => model.summarymodel.civil_court_Litigation1)
+                        <br />
+                        <label>News Media Searches :</label> @Html.DropDownListFor(model => model.summarymodel.news_media_searches, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"},new SelectListItem{Text="Potentially-Relevant Information",Value="Potentially-Relevant Information"}})
+                        <br />
+                        <label>Department of Foreign Affairs and Trade, Australia :</label> @Html.DropDownListFor(model => model.summarymodel.department_foreign, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>European Union Consolidated List of Persons, Groups, Equity :</label> @Html.DropDownListFor(model => model.summarymodel.european_union, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>HM Treasury Consolidated List of Financial Sanctions Targets (formerly Bank of England Sanctions) :</label> @Html.DropDownListFor(model => model.summarymodel.HM_treasury, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>U.S. Bureau of Industry and Security List of Denied Persons, Entities List and Unverified List :</label> @Html.DropDownListFor(model => model.summarymodel.US_bureau, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>U.S. Department of State Foreign Terrorist Organizations :</label> @Html.DropDownListFor(model => model.summarymodel.US_department, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>U.S. Directorate of Defense Trade Controls Debarred Parties Lists :</label> @Html.DropDownListFor(model => model.summarymodel.US_Directorate, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>U.S. General Services Administration Lists of Parties Excluded from Federal Procurement and Non-Procurement Programs :</label> @Html.DropDownListFor(model => model.summarymodel.US_general, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>U.S. Office of Foreign Assets Control :</label> @Html.DropDownListFor(model => model.summarymodel.US_office, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>United Nations Consolidated Sanctions :</label> @Html.DropDownListFor(model => model.summarymodel.UN_consolidated, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>World Bank List of Ineligible Firms and Individuals :</label> @Html.DropDownListFor(model => model.summarymodel.world_bank_list, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>City of London Police (U.K.) :</label> @Html.DropDownListFor(model => model.summarymodel.city_london_police, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Constabularies of Cheshire, Lancashire, and Devon and Cornwall (U.K.) :</label> @Html.DropDownListFor(model => model.summarymodel.constabularies_cheshire, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Hampshire Police (U.K.) :</label> @Html.DropDownListFor(model => model.summarymodel.hampshire_police, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Hong Kong Police Force :</label> @Html.DropDownListFor(model => model.summarymodel.hong_kong_police, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Interpol :</label> @Html.DropDownListFor(model => model.summarymodel.interpol, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Metropolitan Police Service (U.K.) :</label> @Html.DropDownListFor(model => model.summarymodel.metropolitan_police, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>National Crime Squad :</label> @Html.DropDownListFor(model => model.summarymodel.national_crime, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>North Yorkshire Police (U.K.) :</label> @Html.DropDownListFor(model => model.summarymodel.north_yorkshire_polic, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Nottinghamshire Police (U.K.) :</label> @Html.DropDownListFor(model => model.summarymodel.nottinghamshire_police, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Surrey Police (U.K.) :</label> @Html.DropDownListFor(model => model.summarymodel.surrey_police, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Thames Valley Police (U.K.) :</label> @Html.DropDownListFor(model => model.summarymodel.thames_valley_police, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>U.S. Federal Bureau of Investigation :</label> @Html.DropDownListFor(model => model.summarymodel.US_Federal, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>U.S. Secret Service :</label> @Html.DropDownListFor(model => model.summarymodel.US_secret_service, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Warwickshire Police (U.K.) :</label> @Html.DropDownListFor(model => model.summarymodel.warwickshire_police, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Alberta Securities Commission, Canada :</label> @Html.DropDownListFor(model => model.summarymodel.alberta_securities_commission, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Assets Recovery Agency :</label> @Html.DropDownListFor(model => model.summarymodel.asset_recovery_agency, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Australian Prudential Regulation Authority :</label> @Html.DropDownListFor(model => model.summarymodel.australian_prudential, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Australian Securities and Investments :</label> @Html.DropDownListFor(model => model.summarymodel.australian_securities, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Banque de France, CECEI, France :</label> @Html.DropDownListFor(model => model.summarymodel.banque_de_CECEI, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Banque de France, Commission Bancaire, France :</label> @Html.DropDownListFor(model => model.summarymodel.banque_de_commission, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>British Virgin Islands Financial Services Commission :</label> @Html.DropDownListFor(model => model.summarymodel.british_virgin_islands, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Cayman Islands Monetary Authority :</label> @Html.DropDownListFor(model => model.summarymodel.cayman_islands_monetary, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Commission de Surveillance du Secteur Financier, Luxembourg :</label> @Html.DropDownListFor(model => model.summarymodel.commission_de_surveillance, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Commodity Futures Trading Commission :</label> @Html.DropDownListFor(model => model.summarymodel.commodity_futures, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Council for Financial Activities Control, Brazil :</label> @Html.DropDownListFor(model => model.summarymodel.council_financial_activities, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Departamento de Investigacoes Sobre Narcoticos, Brazil :</label> @Html.DropDownListFor(model => model.summarymodel.departamento_de_investigacoes, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Department of Labour Inspection – Combating Forced Labour, Brazil :</label> @Html.DropDownListFor(model => model.summarymodel.department_labour_inspection, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Federal Deposit Insurance Commission :</label> @Html.DropDownListFor(model => model.summarymodel.federal_deposit, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Federal Reserve Board :</label> @Html.DropDownListFor(model => model.summarymodel.federal_reserve, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Financial Action Task Force :</label> @Html.DropDownListFor(model => model.summarymodel.financial_action_task, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Financial Crimes Enforcement Network :</label> @Html.DropDownListFor(model => model.summarymodel.financial_crimes, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Financial Regulator, Ireland :</label> @Html.DropDownListFor(model => model.summarymodel.financial_regulator_ireland, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Hong Kong Monetary Authority :</label> @Html.DropDownListFor(model => model.summarymodel.hongkong_monetary_authority, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Investment Dealers Association of Canada :</label> @Html.DropDownListFor(model => model.summarymodel.investment_association_Canada, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Investment Management Regulatory :</label> @Html.DropDownListFor(model => model.summarymodel.investment_management_regulatory, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Isle of Man Financial Supervision Commission :</label> @Html.DropDownListFor(model => model.summarymodel.isle_financial_supervision, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Jersey Financial Services Commission :</label> @Html.DropDownListFor(model => model.summarymodel.jersey_financial_commission, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Lloyd’s Insurance Arimbolaet :</label> @Html.DropDownListFor(model => model.summarymodel.lloyd_insurance_arimbolaet, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Monetary Authority of Singapore :</label> @Html.DropDownListFor(model => model.summarymodel.monetary_authority_singapore, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>National Credit Union Administration :</label> @Html.DropDownListFor(model => model.summarymodel.national_credit, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>New York Stock Exchange :</label> @Html.DropDownListFor(model => model.summarymodel.new_york_stock, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Office of the Comptroller of the Currency :</label> @Html.DropDownListFor(model => model.summarymodel.Office_of_comptroller, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Office of the Superintendent of Financial Institutions, Canada :</label> @Html.DropDownListFor(model => model.summarymodel.Office_of_superintendent, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Resolution Trust Corporation :</label> @Html.DropDownListFor(model => model.summarymodel.resolution_trust, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Securities and Exchange Commission, Brazil :</label> @Html.DropDownListFor(model => model.summarymodel.securities_exchange_commission, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Securities and Futures Authority :</label> @Html.DropDownListFor(model => model.summarymodel.securities_futuresauthority, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Swedish Financial Supervisory Authority :</label> @Html.DropDownListFor(model => model.summarymodel.swedish_financial_supervisory, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>Swiss Federal Banking Commission :</label> @Html.DropDownListFor(model => model.summarymodel.swiss_federal_banking, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>U.K. Companies House Disqualified Directors :</label> @Html.DropDownListFor(model => model.summarymodel.U_K_companies_disqualified, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>U.S. Court of International Trade :</label> @Html.DropDownListFor(model => model.summarymodel.US_court, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>U.S. Department of Justice :</label> @Html.DropDownListFor(model => model.summarymodel.US_department_justice, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>U.S. Federal Trade Commission :</label> @Html.DropDownListFor(model => model.summarymodel.US_federal_trade, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <label>U.S. Office of Thrift Supervision :</label> @Html.DropDownListFor(model => model.summarymodel.US_office_thrifts, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                        <br />
+                        <input type="submit" name="SaveData" value="SaveSummaryData" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <input id="submit" type="submit" name="Submit" value="SubmitData" />      
+    }
+    @if (!(@TempData["message"] is null))
+    {
+        <p class="alert-danger">@TempData["message"].ToString()</p>
+    }
+</div>
+

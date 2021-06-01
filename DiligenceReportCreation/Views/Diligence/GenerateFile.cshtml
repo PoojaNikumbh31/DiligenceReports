@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "GenerateFile";
+}
+
+<h1>GenerateFile</h1>
+
+<p>
+    File is Ready to Download <button onclick="location.href='@Url.Action("DownloadFile", "Diligence",new { id="myLink"})'">Download File</button>
+</p>
+<script>
+$("#myLink").click(function(e){
+
+    e.preventDefault();
+    $.ajax({
+
+        url:$(this).attr("href"), // comma here instead of semicolon
+        success: function(){
+            alert("File downloaded");  // or any other indication if you want to show            
+        }
+
+    });
+
+});
+</script>

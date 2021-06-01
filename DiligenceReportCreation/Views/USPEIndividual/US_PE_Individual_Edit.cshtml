@@ -1,0 +1,1734 @@
+﻿@model DiligenceReportCreation.Models.MainModel
+
+<h4>US_PE_Individual_Edit</h4>
+<div class="text-center">
+    <h4> @ViewBag.CaseNumber @ViewBag.LastName</h4>
+    <head>
+        @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        @try
+        {
+            @if (Model.additional_States.Count == 0)
+            {
+                <script>
+                    $("#addingstates").show();
+                </script>
+            }
+            else
+            {
+                <script>
+                    $("#addingstates").hide();
+                </script>
+            }
+        }
+        catch
+        {
+            <script>
+                $("#addingstates").show();
+            </script>
+        }
+        <script>
+            $(document).ready(function () {
+                $("select[name='Summarytable']").change(function () {
+                    if ($(this).val() == "Yes") {
+                        $("#sumtab").show();
+                    }
+                    else {
+                        $("#sumtab").hide();
+                    }
+                });
+
+            });
+        </script>
+    </head>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading" id="PIID">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse1">Personal Info</a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse">
+            <div class="panel-body">
+                <label>
+                    All fields with an asterisk (*) are required before you can "Submit Data" to create a report. The final report will reflect the information as it was entered here. Please be sure to double check spelling and use the correct capitalization/punctionation when entering data.
+                </label>
+                <table style="border-collapse: separate; border-spacing: 10px;">
+                    <tr>
+                        <th>Common name subject :</th>
+                        <td>@Html.CheckBoxFor(model => model.diligenceInputModel.CommonNameSubject)</td>
+                    </tr>
+                    <tr>
+                        <th>Client Name<span style="color:black"> *</span></th>
+                        <td>
+                            @Html.EditorFor(model => model.diligenceInputModel.ClientName)
+                            @Html.ValidationMessageFor(model => model.diligenceInputModel.ClientName)
+                        </td>
+                        @*<td><input type="text" name="ClientName" /></td>*@
+                    </tr>
+                    <tr>
+                        <th>Case Number</th>
+                        <td>
+                            @ViewBag.CaseNumber
+                        </td>
+                        @*<td><input type="text" name="CaseNumber" required="required" /></td>*@
+                    </tr>
+                    <tr>
+                        <th>First Name<span style="color:black"> *</span></th>
+                        <td>
+                            @Html.EditorFor(model => model.diligenceInputModel.FirstName)
+                            @Html.ValidationMessageFor(model => model.diligenceInputModel.FirstName)
+                        </td>
+                        @*<td><input type="text" name="FirstName" required="required" /></td>*@
+                    </tr>
+                    <tr>
+                        <th>Middle Name</th>
+                        <td>
+                            @Html.EditorFor(model => model.diligenceInputModel.MiddleName)
+                            @Html.ValidationMessageFor(model => model.diligenceInputModel.MiddleName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Middle Initial</th>
+                        <td>
+                            @Html.EditorFor(model => model.diligenceInputModel.MiddleInitial)
+                            @Html.ValidationMessageFor(model => model.diligenceInputModel.MiddleInitial)
+                        </td>
+                        @* <td><input type="text" name="MiddleInitial" required="required" /></td>*@
+                    </tr>
+                    <tr>
+                        <th>Last Name</th>
+                        <td>
+                            @ViewBag.LastName
+                        </td>
+                        @*<td><input type="text" name="LastName" required="required" /></td>*@
+                    </tr>
+                    <tr>
+                        <th>Maiden Name</th>
+                        <td>
+                            @Html.EditorFor(model => model.diligenceInputModel.MaidenName)
+                            @Html.ValidationMessageFor(model => model.diligenceInputModel.MaidenName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Full Alias Name</th>
+                        <td>
+                            @Html.EditorFor(model => model.diligenceInputModel.FullaliasName)
+                            @Html.ValidationMessageFor(model => model.diligenceInputModel.FullaliasName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Date of Birth</th>
+                        <td>
+                            @Html.TextBoxFor(model => model.diligenceInputModel.Dob, "{0:yyyy-MM}", new { @class = "form-control", type = "month" })
+                            @Html.ValidationMessageFor(model => model.diligenceInputModel.Dob)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>Initial digits of SSN<span style="color:black"> *</span></th>
+                        <td>
+                            @Html.TextBoxFor(model => model.diligenceInputModel.SSNInitials, new { placeholder = "XXX-XX" })
+                            @Html.ValidationMessageFor(model => model.diligenceInputModel.SSNInitials)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Recommend Additional Jurisdictions? </th>
+                        <td>
+                            @Html.EditorFor(model => model.diligenceInputModel.Nonscopecountry1)
+                            @Html.ValidationMessageFor(model => model.diligenceInputModel.Nonscopecountry1)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Current Street Address and Unit No.</th>
+                        <td>
+                            @Html.EditorFor(model => model.diligenceInputModel.CurrentStreet)
+                            @Html.ValidationMessageFor(model => model.diligenceInputModel.CurrentStreet)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Current City</th>
+                        <td>
+                            @Html.EditorFor(model => model.diligenceInputModel.CurrentCity)
+                            @Html.ValidationMessageFor(model => model.diligenceInputModel.CurrentCity)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Current Zip Code</th>
+                        <td>
+                            @Html.EditorFor(model => model.diligenceInputModel.CurrentZipcode)
+                            @Html.ValidationMessageFor(model => model.diligenceInputModel.CurrentZipcode)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Current State</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.diligenceInputModel.CurrentState, new List<SelectListItem>{
+                  new SelectListItem {Text="Select State",Value="Select State"},new SelectListItem{Text="Alabama",Value="Alabama" }
+     ,new SelectListItem{Text="Alaska",Value="Alaska"}
+                                    ,new SelectListItem{Text="Arizona",Value="Arizona"}
+                                    ,new SelectListItem{Text="Arkansas",Value="Arkansas"}
+                                    ,new SelectListItem{Text="California",Value="California"}
+                                    ,new SelectListItem{Text="Colorado",Value="Colorado"}
+                                    ,new SelectListItem{Text="Connecticut",Value="Connecticut"}
+                                    ,new SelectListItem{Text="Delaware",Value="Delaware"}
+                                    ,new SelectListItem{Text="District Of Columbia",Value="District Of Columbia"}
+                                    ,new SelectListItem{Text="Florida",Value="Florida"}
+                                    ,new SelectListItem{Text="Georgia",Value="Georgia"}
+                                    ,new SelectListItem{Text="Hawaii",Value="Hawaii"}
+                                    ,new SelectListItem{Text="Idaho",Value="Idaho"}
+                                     ,new SelectListItem{Text="Illinois",Value="Illinois"}
+                                     ,new SelectListItem{Text="Indiana",Value="Indiana"}
+                                     ,new SelectListItem{Text="Iowa",Value="Iowa"}
+                                     ,new SelectListItem{Text="Kansas",Value="Kansas"}
+                                     ,new SelectListItem{Text="Kentucky",Value="Kentucky"}
+                                     ,new SelectListItem{Text="Louisiana",Value="Louisiana"}
+                                     ,new SelectListItem{Text="Maine",Value="Maine" }
+                                     ,new SelectListItem{Text="Maryland",Value="Maryland" }
+                                     ,new SelectListItem{Text="Massachusetts",Value="Massachusetts" }
+                                     ,new SelectListItem{Text="Michigan",Value="Michigan" }
+                                     ,new SelectListItem{Text="Minnesota",Value="Minnesota" }
+                                     ,new SelectListItem{Text="Mississippi",Value="Mississippi" }
+                                     ,new SelectListItem{Text="Missouri",Value="Missouri"}
+                                     ,new SelectListItem{Text="Montana",Value="Montana"}
+                                     ,new SelectListItem{Text="Nebraska",Value="Nebraska"}
+                                     ,new SelectListItem{Text="Nevada",Value="Nevada"}
+                                     ,new SelectListItem{Text="New Hampshire",Value="New Hampshire"}
+                                     ,new SelectListItem{Text="New Jersey",Value="New Jersey" }
+                                     ,new SelectListItem{Text="New Mexico",Value="New Mexico" }
+                                     ,new SelectListItem{Text="New York",Value="New York"}
+                                     ,new SelectListItem{Text="North Carolina",Value="North Carolina" }
+                                     ,new SelectListItem{Text="North Dakota",Value="North Dakota"}
+                                     ,new SelectListItem{Text="Ohio",Value="Ohio"}
+                                     ,new SelectListItem{Text="Oklahoma",Value="Oklahoma" }
+                                     ,new SelectListItem{Text="Oregon",Value="Oregon"}
+                                     ,new SelectListItem{Text="Pennsylvania",Value="Pennsylvania" }
+                                     ,new SelectListItem{Text="Rhode Island",Value="Rhode Island"}
+                                     ,new SelectListItem{Text="South Carolina",Value="South Carolina" }
+                                     ,new SelectListItem{Text="South Dakota",Value="South Dakota"}
+                                     ,new SelectListItem{Text="Tennessee",Value="Tennessee" }
+                                     ,new SelectListItem{Text="Texas",Value="Texas"}
+                                     ,new SelectListItem{Text="Utah",Value="Utah" }
+                                     ,new SelectListItem{Text="Vermont",Value="Vermont" }
+                                     ,new SelectListItem{Text="Virginia",Value="Virginia"}
+                                     ,new SelectListItem{Text="Washington",Value="Washington" }
+                                     ,new SelectListItem{Text="West Virginia",Value="West Virginia"}
+                                     ,new SelectListItem{Text="Wisconsin",Value="Wisconsin" }
+                                     ,new SelectListItem{Text="Wyoming",Value="Wyoming"} })
+                        </td>
+                    </tr>
+
+                </table>
+                <input type="submit" name="SaveData" value="SavePIData" onclick="callpichange()" />
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" id="PICS">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse6">Additional States covered in Scope</a>
+            </h4>
+        </div>
+        <div id="collapse6" class="panel-collapse collapse">
+            <table id="addstate" class="table">
+                @try
+                {
+                    @if (Model.diligenceInputModel.CurrentState == "Select State")
+                    {
+                    }
+                    else
+                    {
+                        <tr>
+                            <th>Primary State :</th>
+                            <td>@Model.diligenceInputModel.CurrentState</td>
+                        </tr>
+                    }
+                }
+                catch { }
+                @try
+                {
+                    @for (int i = 0; i < Model.additional_States.Count; i++)
+                    {
+                        <tr>
+                            <th>Additional State 1:</th>
+                            <td>
+                                @Html.DropDownListFor(model => model.additional_States[i].additionalstate, new List<SelectListItem>{
+             new SelectListItem {Text="Select State",Value="Select State"},new SelectListItem{Text="Alabama",Value="Alabama" }
+    ,new SelectListItem{Text="Alaska",Value="Alaska"}
+                               ,new SelectListItem{Text="Arizona",Value="Arizona"}
+                               ,new SelectListItem{Text="Arkansas",Value="Arkansas"}
+                               ,new SelectListItem{Text="California",Value="California"}
+                               ,new SelectListItem{Text="Colorado",Value="Colorado"}
+                               ,new SelectListItem{Text="Connecticut",Value="Connecticut"}
+                               ,new SelectListItem{Text="Delaware",Value="Delaware"}
+                               ,new SelectListItem{Text="District Of Columbia",Value="District Of Columbia"}
+                               ,new SelectListItem{Text="Florida",Value="Florida"}
+                               ,new SelectListItem{Text="Georgia",Value="Georgia"}
+                               ,new SelectListItem{Text="Hawaii",Value="Hawaii"}
+                               ,new SelectListItem{Text="Idaho",Value="Idaho"}
+                                ,new SelectListItem{Text="Illinois",Value="Illinois"}
+                                ,new SelectListItem{Text="Indiana",Value="Indiana"}
+                                ,new SelectListItem{Text="Iowa",Value="Iowa"}
+                                ,new SelectListItem{Text="Kansas",Value="Kansas"}
+                                ,new SelectListItem{Text="Kentucky",Value="Kentucky"}
+                                ,new SelectListItem{Text="Louisiana",Value="Louisiana"}
+                                ,new SelectListItem{Text="Maine",Value="Maine" }
+                                ,new SelectListItem{Text="Maryland",Value="Maryland" }
+                                ,new SelectListItem{Text="Massachusetts",Value="Massachusetts" }
+                                ,new SelectListItem{Text="Michigan",Value="Michigan" }
+                                ,new SelectListItem{Text="Minnesota",Value="Minnesota" }
+                                ,new SelectListItem{Text="Mississippi",Value="Mississippi" }
+                                ,new SelectListItem{Text="Missouri",Value="Missouri"}
+                                ,new SelectListItem{Text="Montana",Value="Montana"}
+                                ,new SelectListItem{Text="Nebraska",Value="Nebraska"}
+                                ,new SelectListItem{Text="Nevada",Value="Nevada"}
+                                ,new SelectListItem{Text="New Hampshire",Value="New Hampshire"}
+                                ,new SelectListItem{Text="New Jersey",Value="New Jersey" }
+                                ,new SelectListItem{Text="New Mexico",Value="New Mexico" }
+                                ,new SelectListItem{Text="New York",Value="New York"}
+                                ,new SelectListItem{Text="North Carolina",Value="North Carolina" }
+                                ,new SelectListItem{Text="North Dakota",Value="North Dakota"}
+                                ,new SelectListItem{Text="Ohio",Value="Ohio"}
+                                ,new SelectListItem{Text="Oklahoma",Value="Oklahoma" }
+                                ,new SelectListItem{Text="Oregon",Value="Oregon"}
+                                ,new SelectListItem{Text="Pennsylvania",Value="Pennsylvania" }
+                                ,new SelectListItem{Text="Rhode Island",Value="Rhode Island"}
+                                ,new SelectListItem{Text="South Carolina",Value="South Carolina" }
+                                ,new SelectListItem{Text="South Dakota",Value="South Dakota"}
+                                ,new SelectListItem{Text="Tennessee",Value="Tennessee" }
+                                ,new SelectListItem{Text="Texas",Value="Texas"}
+                                ,new SelectListItem{Text="Utah",Value="Utah" }
+                                ,new SelectListItem{Text="Vermont",Value="Vermont" }
+                                ,new SelectListItem{Text="Virginia",Value="Virginia"}
+                                ,new SelectListItem{Text="Washington",Value="Washington" }
+                                ,new SelectListItem{Text="West Virginia",Value="West Virginia"}
+                                ,new SelectListItem{Text="Wisconsin",Value="Wisconsin" }
+                                ,new SelectListItem{Text="Wyoming",Value="Wyoming"} })
+                            </td>
+                            <td>
+                                <input type="submit" name="SaveData" value='Delete_State_@Model.additional_States[i].id' />
+                            </td>
+                        </tr>
+                    }
+                }
+                catch { }
+            </table>
+            <div id="addingstates">
+                <table id="addstate1" class="table">
+                    <tr>
+                        <th>Additional State :</th>
+                        <td>
+                            <select name="diligence.additional_States[0].additionalstate">
+                                <option value="Select State">Select State</option>
+                                <option value="Alabama">Alabama</option>
+                                <option value="Alaska">Alaska</option>
+                                <option value="Arizona">Arizona</option>
+                                <option value="Arkansas">Arkansas</option>
+                                <option value="California">California</option>
+                                <option value="Colorado">Colorado</option>
+                                <option value="Connecticut">Connecticut</option>
+                                <option value="Delaware">Delaware</option>
+                                <option value="District Of Columbia">District Of Columbia</option>
+                                <option value="Florida">Florida</option>
+                                <option value="Georgia">Georgia</option>
+                                <option value="Hawaii">Hawaii</option>
+                                <option value="Idaho">Idaho</option>
+                                <option value="Illinois">Illinois</option>
+                                <option value="Indiana">Indiana</option>
+                                <option value="Iowa">Iowa</option>
+                                <option value="Kansas">Kansas</option>
+                                <option value="Kentucky">Kentucky</option>
+                                <option value="Louisiana">Louisiana</option>
+                                <option value="Maine">Maine</option>
+                                <option value="Maryland">Maryland</option>
+                                <option value="Massachusetts">Massachusetts</option>
+                                <option value="Michigan">Michigan</option>
+                                <option value="Minnesota">Minnesota</option>
+                                <option value="Mississippi">Mississippi</option>
+                                <option value="Missouri">Missouri</option>
+                                <option value="Montana">Montana</option>
+                                <option value="Nebraska">Nebraska</option>
+                                <option value="Nevada">Nevada</option>
+                                <option value="New Hampshire">New Hampshire</option>
+                                <option value="New Jersey">New Jersey</option>
+                                <option value="New Mexico">New Mexico</option>
+                                <option value="New York">New York</option>
+                                <option value="North Carolina">North Carolina</option>
+                                <option value="North Dakota">North Dakota</option>
+                                <option value="Ohio">Ohio</option>
+                                <option value="Oklahoma">Oklahoma</option>
+                                <option value="Oregon">Oregon</option>
+                                <option value="Pennsylvania">Pennsylvania</option>
+                                <option value="Rhode Island">Rhode Island</option>
+                                <option value="South Carolina">South Carolina</option>
+                                <option value="South Dakota">South Dakota</option>
+                                <option value="Tennessee">Tennessee</option>
+                                <option value="Texas">Texas</option>
+                                <option value="Utah">Utah</option>
+                                <option value="Vermont">Vermont</option>
+                                <option value="Virginia">Virginia</option>
+                                <option value="Washington">Washington</option>
+                                <option value="West Virginia">West Virginia</option>
+                                <option value="Wisconsin">Wisconsin</option>
+                                <option value="Wyoming">Wyoming</option>
+                            </select>
+                        </td>
+                        <td> <input type="button" id="Addstates" value="  Add " onclick="addstates()" style="width:auto" /></td>
+                    </tr>
+                </table>
+            </div>
+            <script type="text/javascript">
+                var p = 1;
+                var q = p + 1;
+                function addstates() {
+
+                    myrow = "<tr><th>State " + q + ":</th><td><select name='diligence.additional_States[" + p + "].additionalstate'> <option value='Select State'>Select State</option><option value='Alabama'>Alabama</option>                <option value='Alaska'>Alaska</option>                <option value='Arizona'>Arizona</option>                <option value='Arkansas'>Arkansas</option>                <option value='California'>California</option>                <option value='Colorado'>Colorado</option>                <option value='Connecticut'>Connecticut</option>                <option value='Delaware'>Delaware</option>                <option value='District Of Columbia'>District Of Columbia</option>                <option value='Florida'>Florida</option>                <option value='Georgia'>Georgia</option>                <option value='Hawaii'>Hawaii</option>                <option value='Idaho'>Idaho</option>                <option value='Illinois'>Illinois</option>                <option value='Indiana'>Indiana</option>                <option value='Iowa'>Iowa</option>                <option value='Kansas'>Kansas</option>                <option value='Kentucky'>Kentucky</option>                <option value='Louisiana'>Louisiana</option>                <option value='Maine'>Maine</option>                <option value='Maryland'>Maryland</option>                <option value='Massachusetts'>Massachusetts</option>                <option value='Michigan'>Michigan</option>                <option value='Minnesota'>Minnesota</option>                <option value='Mississippi'>Mississippi</option>                <option value='Missouri'>Missouri</option>                <option value='Montana'>Montana</option>                <option value='Nebraska'>Nebraska</option>                <option value='Nevada'>Nevada</option>                <option value='New Hampshire'>New Hampshire</option>                <option value='New Jersey'>New Jersey</option>                <option value='New Mexico'>New Mexico</option>                <option value='New York'>New York</option>                <option value='North Carolina'>North Carolina</option>                <option value='North Dakota'>North Dakota</option>                <option value='Ohio'>Ohio</option>                <option value='Oklahoma'>Oklahoma</option>                <option value='Oregon'>Oregon</option>                <option value='Pennsylvania'>Pennsylvania</option>                <option value='Rhode Island'>Rhode Island</option>                <option value='South Carolina'>South Carolina</option>                <option value='South Dakot'>South Dakota</option>                <option value='Tennessee'>Tennessee</option>                <option value='Texas'>Texas</option>                <option value='Utah'>Utah</option>                <option value='Vermont'>Vermont</option>                <option value='Virginia'>Virginia</option>                <option value='Washington'>Washington</option>                <option value='West Virginia'>West Virginia</option>                <option value='Wisconsin'>Wisconsin</option>                <option value='Wyoming'>Wyoming</option>            </select ></td><td><input type='button' id='Delete' value='Delete' onclick='removestates(this)' style='width:auto' /></td></tr>";
+                    $("#addstate1").last().append(myrow);
+                    p = p + 1;
+                    q = q + 1;
+                }
+                function removestates(td) {
+                    var row = $(td).closest("tr"); // find <tr> parent
+                    q = q - 1;
+                    row.remove();
+                }
+            </script>
+            <input type="submit" name="SaveData" value="SaveCSData" />
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" id="EMPID">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse3">Employment Details</a>
+            </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div id="Empdiv">
+                    <label>
+                        All fields with an asterisk (*) are required before you can "Submit Data" to create a report. The final report will reflect the information as it was entered here. Please be sure to double check spelling and use the correct capitalization/punctionation when entering data.
+                        If employer is not located in United States, leave Employee State field blank and manually type in City, Country into the Employee City field.
+                    </label>
+                    <table id="Emp" class="table">
+                        <thead>
+                            <tr>
+                                <th>Employee Status</th>
+                                <th>Employee Position<span style="color:black"> *</span></th>
+                                <th>Employer<span style="color:black"> *</span></th>
+                                <th>Employee StartDate</th>
+                                <th>Employee EndDate</th>
+                                <th>Employee State</th>
+                                <th>Employee City</th>
+                                <th>Employee Confirmed</th>
+                            </tr>
+                        </thead>
+                        <tbody style="text-align:left">
+                            @try
+                            {
+                                @for (int i = 0; i < Model.EmployerModel.Count; i++)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DropDownListFor(model => model.EmployerModel[i].Emp_Status, new List<SelectListItem>{
+                                            new SelectListItem {Text="Previous",Value="Previous"},new SelectListItem{Text="Current",Value="Current"}})
+                                        </td>
+                                        <td>
+                                            @Html.EditorFor(model => model.EmployerModel[i].Emp_Position)
+                                            @Html.ValidationMessageFor(model => model.EmployerModel[i].Emp_Position)
+                                        </td>
+                                        <td>
+                                            @Html.EditorFor(model => model.EmployerModel[i].Emp_Employer)
+                                            @Html.ValidationMessageFor(model => model.EmployerModel[i].Emp_Employer)
+                                        </td>
+                                        <td>
+                                            @Html.DropDownListFor(model => model.EmployerModel[i].Emp_StartDateMonth, new List<SelectListItem>{
+ new SelectListItem {Text="Month",Value="0"},new SelectListItem{Text="Jan",Value="January"},new SelectListItem{ Text="Feb",Value="February"}
+ ,new SelectListItem{ Text="Mar",Value="March"},new SelectListItem{ Text="Apr",Value="April"},new SelectListItem{ Text="May",Value="May"},new SelectListItem{ Text="Jun",Value="June"}
+ ,new SelectListItem{ Text="Jul",Value="July"},new SelectListItem{ Text="Aug",Value="August"},new SelectListItem{ Text="Sep",Value="September"},new SelectListItem{ Text="Oct",Value="October"}
+ ,new SelectListItem{ Text="Nov",Value="November"},new SelectListItem{ Text="Dec",Value="December"}})
+                                            @Html.ValidationMessageFor(model => model.EmployerModel[i].Emp_StartDateMonth)
+
+                                            @Html.DropDownListFor(model => model.EmployerModel[i].Emp_StartDateDay, new List<SelectListItem> {
+                                             new SelectListItem { Text = "Day", Value = "Day" }, new SelectListItem { Text = "1", Value = "1" }, new SelectListItem { Text = "2", Value = "2" }, new SelectListItem { Text = "3", Value = "3" }
+                                           , new SelectListItem { Text = "4", Value = "4" }, new SelectListItem { Text = "5", Value = "5" }, new SelectListItem { Text = "6", Value = "6" }, new SelectListItem { Text = "7", Value = "7" }
+                                           , new SelectListItem { Text = "8", Value = "8" }, new SelectListItem { Text = "9", Value = "9" }, new SelectListItem { Text = "10", Value = "10" }, new SelectListItem { Text = "11", Value = "11" }, new SelectListItem { Text = "12", Value = "12" }
+                                           , new SelectListItem { Text = "13", Value = "13" }, new SelectListItem { Text = "14", Value = "14" }, new SelectListItem { Text = "15", Value = "15" }, new SelectListItem { Text = "16", Value = "16" }
+                                           , new SelectListItem { Text = "17", Value = "17" }, new SelectListItem { Text = "18", Value = "18" }, new SelectListItem { Text = "19", Value = "19" }, new SelectListItem { Text = "20", Value = "20" }
+                                           , new SelectListItem { Text = "21", Value = "21" }, new SelectListItem { Text = "22", Value = "22" }, new SelectListItem { Text = "23", Value = "23" }, new SelectListItem { Text = "24", Value = "24" }
+                                           , new SelectListItem { Text = "25", Value = "25" }, new SelectListItem { Text = "26", Value = "26" }, new SelectListItem { Text = "27", Value = "27" }, new SelectListItem { Text = "28", Value = "28" }
+                                           , new SelectListItem { Text = "29", Value = "29" }, new SelectListItem { Text = "30", Value = "30" }, new SelectListItem { Text = "31", Value = "31" }})
+
+                                            @Html.TextBoxFor(model => model.EmployerModel[i].Emp_StartDateYear, new { placeholder = "Year" })
+                                        </td>
+                                        <td>
+                                            @Html.DropDownListFor(model => model.EmployerModel[i].Emp_EndDateMonth, new List<SelectListItem>{
+               new SelectListItem {Text="Month",Value="0"},new SelectListItem{Text="Jan",Value="January"},new SelectListItem{ Text="Feb",Value="February"}
+                                        ,new SelectListItem{ Text="Mar",Value="March"},new SelectListItem{ Text="Apr",Value="April"},new SelectListItem{ Text="May",Value="May"},new SelectListItem{ Text="Jun",Value="June"}
+                                        ,new SelectListItem{ Text="Jul",Value="July"},new SelectListItem{ Text="Aug",Value="August"},new SelectListItem{ Text="Sep",Value="September"},new SelectListItem{ Text="Oct",Value="October"}
+                                        ,new SelectListItem{ Text="Nov",Value="November"},new SelectListItem{ Text="Dec",Value="December"}})
+                                            @Html.ValidationMessageFor(model => model.EmployerModel[i].Emp_EndDateMonth)
+
+                                            @Html.DropDownListFor(model => model.EmployerModel[i].Emp_EndDateDay, new List<SelectListItem> {
+                                             new SelectListItem { Text = "Day", Value = "Day" }, new SelectListItem { Text = "1", Value = "1" }, new SelectListItem { Text = "2", Value = "2" }, new SelectListItem { Text = "3", Value = "3" }
+                                           , new SelectListItem { Text = "4", Value = "4" }, new SelectListItem { Text = "5", Value = "5" }, new SelectListItem { Text = "6", Value = "6" }, new SelectListItem { Text = "7", Value = "7" }
+                                           , new SelectListItem { Text = "8", Value = "8" }, new SelectListItem { Text = "9", Value = "9" }, new SelectListItem { Text = "10", Value = "10" }, new SelectListItem { Text = "11", Value = "11" }, new SelectListItem { Text = "12", Value = "12" }
+                                           , new SelectListItem { Text = "13", Value = "13" }, new SelectListItem { Text = "14", Value = "14" }, new SelectListItem { Text = "15", Value = "15" }, new SelectListItem { Text = "16", Value = "16" }
+                                           , new SelectListItem { Text = "17", Value = "17" }, new SelectListItem { Text = "18", Value = "18" }, new SelectListItem { Text = "19", Value = "19" }, new SelectListItem { Text = "20", Value = "20" }
+                                           , new SelectListItem { Text = "21", Value = "21" }, new SelectListItem { Text = "22", Value = "22" }, new SelectListItem { Text = "23", Value = "23" }, new SelectListItem { Text = "24", Value = "24" }
+                                           , new SelectListItem { Text = "25", Value = "25" }, new SelectListItem { Text = "26", Value = "26" }, new SelectListItem { Text = "27", Value = "27" }, new SelectListItem { Text = "28", Value = "28" }
+                                           , new SelectListItem { Text = "29", Value = "29" }, new SelectListItem { Text = "30", Value = "30" }, new SelectListItem { Text = "31", Value = "31" }})
+
+                                            @Html.TextBoxFor(model => model.EmployerModel[i].Emp_EndDateYear, new { placeholder = "Year" })
+                                        </td>
+                                        <td>
+                                            @Html.DropDownListFor(model => model.EmployerModel[i].Emp_State, new List<SelectListItem>{
+                 new SelectListItem {Text="Select State",Value="Select State"},new SelectListItem{Text="Alabama",Value="Alabama" }
+    ,new SelectListItem{Text="Alaska",Value="Alaska"}
+                                   ,new SelectListItem{Text="Arizona",Value="Arizona"}
+                                   ,new SelectListItem{Text="Arkansas",Value="Arkansas"}
+                                   ,new SelectListItem{Text="California",Value="California"}
+                                   ,new SelectListItem{Text="Colorado",Value="Colorado"}
+                                   ,new SelectListItem{Text="Connecticut",Value="Connecticut"}
+                                   ,new SelectListItem{Text="Delaware",Value="Delaware"}
+                                   ,new SelectListItem{Text="District Of Columbia",Value="District Of Columbia"}
+                                   ,new SelectListItem{Text="Florida",Value="Florida"}
+                                   ,new SelectListItem{Text="Georgia",Value="Georgia"}
+                                   ,new SelectListItem{Text="Hawaii",Value="Hawaii"}
+                                   ,new SelectListItem{Text="Idaho",Value="Idaho"}
+                                    ,new SelectListItem{Text="Illinois",Value="Illinois"}
+                                    ,new SelectListItem{Text="Indiana",Value="Indiana"}
+                                    ,new SelectListItem{Text="Iowa",Value="Iowa"}
+                                    ,new SelectListItem{Text="Kansas",Value="Kansas"}
+                                    ,new SelectListItem{Text="Kentucky",Value="Kentucky"}
+                                    ,new SelectListItem{Text="Louisiana",Value="Louisiana"}
+                                    ,new SelectListItem{Text="Maine",Value="Maine" }
+                                    ,new SelectListItem{Text="Maryland",Value="Maryland" }
+                                    ,new SelectListItem{Text="Massachusetts",Value="Massachusetts" }
+                                    ,new SelectListItem{Text="Michigan",Value="Michigan" }
+                                    ,new SelectListItem{Text="Minnesota",Value="Minnesota" }
+                                    ,new SelectListItem{Text="Mississippi",Value="Mississippi" }
+                                    ,new SelectListItem{Text="Missouri",Value="Missouri"}
+                                    ,new SelectListItem{Text="Montana",Value="Montana"}
+                                    ,new SelectListItem{Text="Nebraska",Value="Nebraska"}
+                                    ,new SelectListItem{Text="Nevada",Value="Nevada"}
+                                    ,new SelectListItem{Text="New Hampshire",Value="New Hampshire"}
+                                    ,new SelectListItem{Text="New Jersey",Value="New Jersey" }
+                                    ,new SelectListItem{Text="New Mexico",Value="New Mexico" }
+                                    ,new SelectListItem{Text="New York",Value="New York"}
+                                    ,new SelectListItem{Text="North Carolina",Value="North Carolina" }
+                                    ,new SelectListItem{Text="North Dakota",Value="North Dakota"}
+                                    ,new SelectListItem{Text="Ohio",Value="Ohio"}
+                                    ,new SelectListItem{Text="Oklahoma",Value="Oklahoma" }
+                                    ,new SelectListItem{Text="Oregon",Value="Oregon"}
+                                    ,new SelectListItem{Text="Pennsylvania",Value="Pennsylvania" }
+                                    ,new SelectListItem{Text="Rhode Island",Value="Rhode Island"}
+                                    ,new SelectListItem{Text="South Carolina",Value="South Carolina" }
+                                    ,new SelectListItem{Text="South Dakota",Value="South Dakota"}
+                                    ,new SelectListItem{Text="Tennessee",Value="Tennessee" }
+                                    ,new SelectListItem{Text="Texas",Value="Texas"}
+                                    ,new SelectListItem{Text="Utah",Value="Utah" }
+                                    ,new SelectListItem{Text="Vermont",Value="Vermont" }
+                                    ,new SelectListItem{Text="Virginia",Value="Virginia"}
+                                    ,new SelectListItem{Text="Washington",Value="Washington" }
+                                    ,new SelectListItem{Text="West Virginia",Value="West Virginia"}
+                                    ,new SelectListItem{Text="Wisconsin",Value="Wisconsin" }
+                                    ,new SelectListItem{Text="Wyoming",Value="Wyoming"} })
+                                        </td>
+                                        <td>
+                                            @Html.EditorFor(model => model.EmployerModel[i].Emp_City)
+                                            @Html.ValidationMessageFor(model => model.EmployerModel[i].Emp_City)
+                                        </td>
+                                        <td>
+                                            @Html.DropDownListFor(model => model.EmployerModel[i].Emp_Confirmed, new List<SelectListItem>{
+                                            new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"},new SelectListItem{Text="No - Current Employer",Value="No - Current Employer"},new SelectListItem{ Text="Result Pending",Value="Result Pending"},new SelectListItem{ Text="Not Reported By Subject",Value="Not Reported By Subject"} })
+                                        </td>
+                                        <td>
+                                            <input type="submit" name="SaveData" value='Delete_Emp_@Model.EmployerModel[i].id' />
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            catch
+                            {
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div id="Empadd">
+                    <table id="Emp1" class="table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <select id="Emp_Status" name="diligence.employerList[0].Emp_Status"><option value="Current">Current</option><option value="Previous">Previous</option></select>
+                                </td>
+                                <td>
+                                    <input type="text" id="Emp_Position" name="diligence.employerList[0].Emp_Position" value="" />
+                                </td>
+                                <td>
+                                    <input type="text" id="Emp_Employer" name="diligence.employerList[0].Emp_Employer" value="" />
+                                </td>
+                                <td>
+                                    <select name="diligence.employerList[0].Emp_StartDateMonth" id="SEMPMonth">
+                                        <option value="0">Month</option>
+                                        <option value="January">Jan</option>
+                                        <option value="February">Feb</option>
+                                        <option value="March">Mar</option>
+                                        <option value="April">Apr</option>
+                                        <option value="May">May</option>
+                                        <option value="June">Jun</option>
+                                        <option value="July">Jul</option>
+                                        <option value="August">Aug</option>
+                                        <option value="September">Sep</option>
+                                        <option value="October">Oct</option>
+                                        <option value="November">Nov</option>
+                                        <option value="December">Dec</option>
+                                    </select>
+
+                                    <select name="diligence.employerList[0].Emp_StartDateDay" id="SdayEMP" onfocus="DayFunction('SdayEMP');">
+                                        <option value="Day">Day</option>
+                                    </select>
+
+
+                                    <select name="diligence.employerList[0].Emp_StartDateYear" id="SyearEMP" onfocus="yearfunction('SyearEMP');">
+                                        <option value="Year">Year</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="diligence.employerList[0].Emp_EndDateMonth" id="EEMPMonth">
+                                        <option value="0">Month</option>
+                                        <option value="January">Jan</option>
+                                        <option value="February">Feb</option>
+                                        <option value="March">Mar</option>
+                                        <option value="April">Apr</option>
+                                        <option value="May">May</option>
+                                        <option value="June">Jun</option>
+                                        <option value="July">Jul</option>
+                                        <option value="August">Aug</option>
+                                        <option value="September">Sep</option>
+                                        <option value="October">Oct</option>
+                                        <option value="November">Nov</option>
+                                        <option value="December">Dec</option>
+                                    </select>
+
+                                    <select name="employerList[0].Emp_EndDateDay" id="EdayEMP" onfocus="DayFunction('EdayEMP')">
+                                        <option value="Day">Day</option>
+                                    </select>
+
+
+                                    <select name="employerList[0].Emp_EndDateYear" id="EyearEMP" onfocus="yearfunction('EyearEMP');">
+                                        <option value="Year">Year</option>
+                                    </select>
+
+
+                                </td>
+                                <td>
+                                    @*<input type="text" id="Emp_State" name="employerList[0].Emp_State" value="" />*@
+                                    <select name="diligence.employerList[0].Emp_State">
+                                        <option value="Select State">Select State</option>
+                                        <option value="Alabama">Alabama</option>
+                                        <option value="Alaska">Alaska</option>
+                                        <option value="Arizona">Arizona</option>
+                                        <option value="Arkansas">Arkansas</option>
+                                        <option value="California">California</option>
+                                        <option value="Colorado">Colorado</option>
+                                        <option value="Connecticut">Connecticut</option>
+                                        <option value="Delaware">Delaware</option>
+                                        <option value="District Of Columbia">District Of Columbia</option>
+                                        <option value="Florida">Florida</option>
+                                        <option value="Georgia">Georgia</option>
+                                        <option value="Hawaii">Hawaii</option>
+                                        <option value="Idaho">Idaho</option>
+                                        <option value="Illinois">Illinois</option>
+                                        <option value="Indiana">Indiana</option>
+                                        <option value="Iowa">Iowa</option>
+                                        <option value="Kansas">Kansas</option>
+                                        <option value="Kentucky">Kentucky</option>
+                                        <option value="Louisiana">Louisiana</option>
+                                        <option value="Maine">Maine</option>
+                                        <option value="Maryland">Maryland</option>
+                                        <option value="Massachusetts">Massachusetts</option>
+                                        <option value="Michigan">Michigan</option>
+                                        <option value="Minnesota">Minnesota</option>
+                                        <option value="Mississippi">Mississippi</option>
+                                        <option value="Missouri">Missouri</option>
+                                        <option value="Montana">Montana</option>
+                                        <option value="Nebraska">Nebraska</option>
+                                        <option value="Nevada">Nevada</option>
+                                        <option value="New Hampshire">New Hampshire</option>
+                                        <option value="New Jersey">New Jersey</option>
+                                        <option value="New Mexico">New Mexico</option>
+                                        <option value="New York">New York</option>
+                                        <option value="North Carolina">North Carolina</option>
+                                        <option value="North Dakota">North Dakota</option>
+                                        <option value="Ohio">Ohio</option>
+                                        <option value="Oklahoma">Oklahoma</option>
+                                        <option value="Oregon">Oregon</option>
+                                        <option value="Pennsylvania">Pennsylvania</option>
+                                        <option value="Rhode Island">Rhode Island</option>
+                                        <option value="South Carolina">South Carolina</option>
+                                        <option value="South Dakota">South Dakota</option>
+                                        <option value="Tennessee">Tennessee</option>
+                                        <option value="Texas">Texas</option>
+                                        <option value="Utah">Utah</option>
+                                        <option value="Vermont">Vermont</option>
+                                        <option value="Virginia">Virginia</option>
+                                        <option value="Washington">Washington</option>
+                                        <option value="West Virginia">West Virginia</option>
+                                        <option value="Wisconsin">Wisconsin</option>
+                                        <option value="Wyoming">Wyoming</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" id="Emp_City" name="diligence.employerList[0].Emp_City" value="" />
+                                </td>
+                                <td>
+                                    <select id="Emp_Confirmed" name='diligence.employerList[0].Emp_Confirmed'>
+                                        <option value="Yes"> Yes </option>
+                                        <option value="No">No</option>
+                                        <option value="No - Current Employer">No - Current Employer</option>
+                                        <option value="Result Pending">Result Pending</option>
+                                        <option value="Not Reported By Subject">Not Reported By Subject</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="button" id="Add" value="  Add " onclick="add()" style="width:auto" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <script type="text/javascript">
+                var i=1;
+                var m=10000;
+                var a=100000;
+                var b=1000000;
+                var l=10000000;
+                function add() {
+
+                    myrow = "<tr><td><select id='Emp_Status' name='diligence.employerList[" + i + "].Emp_Status'><option value='Previous'>Previous</option></select></td><td><input type='text' id='Emp_Position' name='diligence.employerList[" + i + "].Emp_Position' value='' /></td><td><input type='text' id='Emp_Employer' name='diligence.employerList[" + i + "].Emp_Employer' value='' /></td><td><select name='diligence.employerList[" + i + "].Emp_StartDateMonth' id=''><option value='0'>Month</option><option value='January'>Jan</option><option value='February'>Feb</option><option value='March'>Mar</option><option value='April'>Apr</option><option value='May'>May</option><option value='June'>Jun</option><option value='July'>Jul</option><option value='August'>Aug</option><option value='September'>Sep</option><option value='October'>Oct</option><option value='November'>Nov</option><option value='December'>Dec</option></select><select name='diligence.employerList[" + i + "].Emp_StartDateDay' id=" + m + "  onfocus='DayFunction(" + m + ")'>                <option value='Day'>Day</option>            </select>                        <select name='diligence.employerList[" + i + "].Emp_StartDateYear' id=" + a + "  onfocus='yearfunction(" + a + ")'>                <option value='Year'>Year</option>                        </select>        </td>        <td>             <select name='diligence.employerList[" + i + "].Emp_EndDateMonth' id='EEMPMonth'>                <option value='0'>Month</option>                <option value='January'>Jan</option>                <option value='February'>Feb</option>                <option value='March'>Mar</option>                <option value='April'>Apr</option>                <option value='May'>May</option>                <option value='June'>Jun</option>                <option value='July'>Jul</option>                <option value='August'>Aug</option>                <option value='September'>Sep</option>                <option value='October'>Oct</option>                <option value='November'>Nov</option>                <option value='December'>Dec</option>            </select>            <select name='diligence.employerList[" + i + "].Emp_EndDateDay' id=" + b + " onfocus='DayFunction(" + b + ")'>                <option value='Day'>Day</option>            </select>                       <select name='diligence.employerList[" + i + "].Emp_EndDateYear' id=" + l + " onfocus='yearfunction(" + l + ")'>                <option value='Year'>Year</option>            </select>                   </td>        <td>            @*<input type="text" id="Emp_State" name="employerList[0].Emp_State" value="" />*@            <select name='diligence.employerList[" + i + "].Emp_State'><option value='Select state'>Select state</option><option value='Alabama'>Alabama</option>                <option value='Alaska'>Alaska</option>                <option value='Arizona'>Arizona</option>                <option value='Arkansas'>Arkansas</option>                <option value='California'>California</option>                <option value='Colorado'>Colorado</option>                <option value='Connecticut'>Connecticut</option>                <option value='Delaware'>Delaware</option>                <option value='District Of Columbia'>District Of Columbia</option>                <option value='Florida'>Florida</option>                <option value='Georgia'>Georgia</option>                <option value='Hawaii'>Hawaii</option>                <option value='Idaho'>Idaho</option>                <option value='Illinois'>Illinois</option>                <option value='Indiana'>Indiana</option>                <option value='Iowa'>Iowa</option>                <option value='Kansas'>Kansas</option>                <option value='Kentucky'>Kentucky</option>                <option value='Louisiana'>Louisiana</option>                <option value='Maine'>Maine</option>                <option value='Maryland'>Maryland</option>                <option value='Massachusetts'>Massachusetts</option>                <option value='Michigan'>Michigan</option>                <option value='Minnesota'>Minnesota</option>                <option value='Mississippi'>Mississippi</option>                <option value='Missouri'>Missouri</option>                <option value='Montana'>Montana</option>                <option value='Nebraska'>Nebraska</option>                <option value='Nevada'>Nevada</option>                <option value='New Hampshire'>New Hampshire</option>                <option value='New Jersey'>New Jersey</option>                <option value='New Mexico'>New Mexico</option>                <option value='New York'>New York</option>                <option value='North Carolina'>North Carolina</option>                <option value='North Dakota'>North Dakota</option>                <option value='Ohio'>Ohio</option>                <option value='Oklahoma'>Oklahoma</option>                <option value='Oregon'>Oregon</option>                <option value='Pennsylvania'>Pennsylvania</option>                <option value='Rhode Island'>Rhode Island</option>                <option value='South Carolina'>South Carolina</option>                <option value='South Dakot'>South Dakota</option>                <option value='Tennessee'>Tennessee</option>                <option value='Texas'>Texas</option>                <option value='Utah'>Utah</option>                <option value='Vermont'>Vermont</option>                <option value='Virginia'>Virginia</option>                <option value='Washington'>Washington</option>                <option value='West Virginia'>West Virginia</option>                <option value='Wisconsin'>Wisconsin</option>                <option value='Wyoming'>Wyoming</option>            </select >        </td > <td>            <input type='text' id='Emp_City' name='diligence.employerList[" + i + "].Emp_City' value='' />        </td>        <td>            <select id='Emp_Confirmed' name='diligence.employerList[" + i + "].Emp_Confirmed'><option value='Yes'> Yes </option><option value='No'>No</option><option value='No - Current Employer'>No - Current Employer</option><option value='Result Pending'>Result Pending</option> <option value='Not Reported By Subject'>Not Reported By Subject</option> </select>        </td>        <td>            <input type='button' value='Delete Row' onclick='RemoveRows(this);' style='width:auto'>        </td>    </tr>";
+
+                    $("#Emp1").last().append(myrow);
+                    i = i + 1;
+                    a = a - 1;
+                    b = b + 1;
+                    l = l - 1;
+                    m = m + 1;
+
+    }
+                function RemoveRows(td) {
+                    var row = $(td).closest("tr"); // find <tr> parent
+                    row.remove();
+                }
+                function yearfunction(YID)
+                {
+                    for (y = 1940; y <= 2030; y++)
+                    {
+                            var optn = document.createElement("OPTION");
+                            optn.text = y;
+                            optn.value = y;
+                            //var av= $(td).options.add(optn);
+                            document.getElementById(YID).options.add(optn);
+                       }
+                }
+                    function DayFunction(DID) {
+                        for (y = 1; y <= 31; y++) {
+                            var optn = document.createElement("OPTION");
+                            optn.text = y;
+                            optn.value = y;
+                            document.getElementById(DID).options.add(optn);
+                        }
+                    }
+                </script>
+                <input type="submit" name="SaveData" value="SaveEMPData" />
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" id="EDUID">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse4">Education Details</a>
+            </h4>
+        </div>
+        <div id="collapse4" class="panel-collapse collapse">
+            <div class="panel-body">
+                <label>
+                    All fields with an asterisk (*) are required before you can "Submit Data" to create a report. The final report will reflect the information as it was entered here. Please be sure to double check spelling and use the correct capitalization/punctionation when entering data.
+                </label>
+                <table id="Edu" class="table">
+                    <thead>
+                        <tr>
+                            <th>Education History</th>
+                            <th>Degree<span style="color:black"> *</span></th>
+                            <th>School<span style="color:black"> *</span></th>
+                            <th>Major obtained</th>
+                            <th>Additional Info</th>
+                            <th>Graduate Date</th>
+                            <th>Education Start Date</th>
+                            <th>Education End Date</th>
+                            <th>Education Location</th>
+                            <th>Confirmed</th>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align:left">
+                        @try
+                        {
+                            @for (int i = 0; i < Model.educationModels.Count; i++)
+                            {
+                        <tr>
+                            <td>
+                                @Html.DropDownListFor(model => model.educationModels[i].Edu_History, new List<SelectListItem>{
+      new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                @Html.ValidationMessageFor(model => model.educationModels[i].Edu_History)
+                            </td>
+                            <td>
+                                @Html.EditorFor(model => model.educationModels[i].Edu_Degree)
+                                @Html.ValidationMessageFor(model => model.educationModels[i].Edu_Degree)
+                            </td>
+                            <td>
+                                @Html.EditorFor(model => model.educationModels[i].Edu_School)
+                                @Html.ValidationMessageFor(model => model.educationModels[i].Edu_School)
+                            </td>
+                            <td>
+                                @Html.EditorFor(model => model.educationModels[i].Edu_Major)
+                                @Html.ValidationMessageFor(model => model.educationModels[i].Edu_Major)
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(model => model.educationModels[i].Edu_AdditionalInfo, new List<SelectListItem>{
+      new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                @Html.ValidationMessageFor(model => model.educationModels[i].Edu_AdditionalInfo)
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(model => model.educationModels[i].Edu_GradDateMonth, new List<SelectListItem>{
+  new SelectListItem {Text="Month",Value="0"},new SelectListItem{Text="Jan",Value="January"},new SelectListItem{ Text="Feb",Value="February"}
+                           ,new SelectListItem{ Text="Mar",Value="March"},new SelectListItem{ Text="Apr",Value="April"},new SelectListItem{ Text="May",Value="May"},new SelectListItem{ Text="Jun",Value="June"}
+                           ,new SelectListItem{ Text="Jul",Value="July"},new SelectListItem{ Text="Aug",Value="August"},new SelectListItem{ Text="Sep",Value="September"},new SelectListItem{ Text="Oct",Value="October"}
+                           ,new SelectListItem{ Text="Nov",Value="November"},new SelectListItem{ Text="Dec",Value="December"}})
+                                @Html.ValidationMessageFor(model => model.educationModels[i].Edu_GradDateMonth)
+
+                                @Html.DropDownListFor(model => model.educationModels[i].Edu_GradDateDay, new List<SelectListItem> {
+                                     new SelectListItem { Text = "Day", Value = "Day" }, new SelectListItem { Text = "1", Value = "1" }, new SelectListItem { Text = "2", Value = "2" }, new SelectListItem { Text = "3", Value = "3" }
+                                   , new SelectListItem { Text = "4", Value = "4" }, new SelectListItem { Text = "5", Value = "5" }, new SelectListItem { Text = "6", Value = "6" }, new SelectListItem { Text = "7", Value = "7" }
+                                   , new SelectListItem { Text = "8", Value = "8" }, new SelectListItem { Text = "9", Value = "9" }, new SelectListItem { Text = "10", Value = "10" }, new SelectListItem { Text = "11", Value = "11" }, new SelectListItem { Text = "12", Value = "12" }
+                                   , new SelectListItem { Text = "13", Value = "13" }, new SelectListItem { Text = "14", Value = "14" }, new SelectListItem { Text = "15", Value = "15" }, new SelectListItem { Text = "16", Value = "16" }
+                                   , new SelectListItem { Text = "17", Value = "17" }, new SelectListItem { Text = "18", Value = "18" }, new SelectListItem { Text = "19", Value = "19" }, new SelectListItem { Text = "20", Value = "20" }
+                                   , new SelectListItem { Text = "21", Value = "21" }, new SelectListItem { Text = "22", Value = "22" }, new SelectListItem { Text = "23", Value = "23" }, new SelectListItem { Text = "24", Value = "24" }
+                                   , new SelectListItem { Text = "25", Value = "25" }, new SelectListItem { Text = "26", Value = "26" }, new SelectListItem { Text = "27", Value = "27" }, new SelectListItem { Text = "28", Value = "28" }
+                                   , new SelectListItem { Text = "29", Value = "29" }, new SelectListItem { Text = "30", Value = "30" }, new SelectListItem { Text = "31", Value = "31" }})
+
+                                @Html.TextBoxFor(model => model.educationModels[i].Edu_GradDateYear, new { placeholder = "Year" })
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(model => model.educationModels[i].Edu_StartDateMonth, new List<SelectListItem>{
+new SelectListItem {Text="Month",Value="0"},new SelectListItem{Text="Jan",Value="January"},new SelectListItem{ Text="Feb",Value="February"}
+                         ,new SelectListItem{ Text="Mar",Value="March"},new SelectListItem{ Text="Apr",Value="April"},new SelectListItem{ Text="May",Value="May"},new SelectListItem{ Text="Jun",Value="June"}
+                         ,new SelectListItem{ Text="Jul",Value="July"},new SelectListItem{ Text="Aug",Value="August"},new SelectListItem{ Text="Sep",Value="September"},new SelectListItem{ Text="Oct",Value="October"}
+                         ,new SelectListItem{ Text="Nov",Value="November"},new SelectListItem{ Text="Dec",Value="December"}})
+                                @Html.ValidationMessageFor(model => model.educationModels[i].Edu_StartDateMonth)
+
+                                @Html.DropDownListFor(model => model.educationModels[i].Edu_StartDateDay, new List<SelectListItem> {
+                                     new SelectListItem { Text = "Day", Value = "Day" }, new SelectListItem { Text = "1", Value = "1" }, new SelectListItem { Text = "2", Value = "2" }, new SelectListItem { Text = "3", Value = "3" }
+                                   , new SelectListItem { Text = "4", Value = "4" }, new SelectListItem { Text = "5", Value = "5" }, new SelectListItem { Text = "6", Value = "6" }, new SelectListItem { Text = "7", Value = "7" }
+                                   , new SelectListItem { Text = "8", Value = "8" }, new SelectListItem { Text = "9", Value = "9" }, new SelectListItem { Text = "10", Value = "10" }, new SelectListItem { Text = "11", Value = "11" }, new SelectListItem { Text = "12", Value = "12" }
+                                   , new SelectListItem { Text = "13", Value = "13" }, new SelectListItem { Text = "14", Value = "14" }, new SelectListItem { Text = "15", Value = "15" }, new SelectListItem { Text = "16", Value = "16" }
+                                   , new SelectListItem { Text = "17", Value = "17" }, new SelectListItem { Text = "18", Value = "18" }, new SelectListItem { Text = "19", Value = "19" }, new SelectListItem { Text = "20", Value = "20" }
+                                   , new SelectListItem { Text = "21", Value = "21" }, new SelectListItem { Text = "22", Value = "22" }, new SelectListItem { Text = "23", Value = "23" }, new SelectListItem { Text = "24", Value = "24" }
+                                   , new SelectListItem { Text = "25", Value = "25" }, new SelectListItem { Text = "26", Value = "26" }, new SelectListItem { Text = "27", Value = "27" }, new SelectListItem { Text = "28", Value = "28" }
+                                   , new SelectListItem { Text = "29", Value = "29" }, new SelectListItem { Text = "30", Value = "30" }, new SelectListItem { Text = "31", Value = "31" }})
+
+                                @Html.TextBoxFor(model => model.educationModels[i].Edu_StartDateYear, new { placeholder = "Year" })
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(model => model.educationModels[i].Edu_EndDateMonth, new List<SelectListItem>{
+new SelectListItem {Text="Month",Value="0"},new SelectListItem{Text="Jan",Value="January"},new SelectListItem{ Text="Feb",Value="February"}
+                         ,new SelectListItem{ Text="Mar",Value="March"},new SelectListItem{ Text="Apr",Value="April"},new SelectListItem{ Text="May",Value="May"},new SelectListItem{ Text="Jun",Value="June"}
+                         ,new SelectListItem{ Text="Jul",Value="July"},new SelectListItem{ Text="Aug",Value="August"},new SelectListItem{ Text="Sep",Value="September"},new SelectListItem{ Text="Oct",Value="October"}
+                         ,new SelectListItem{ Text="Nov",Value="November"},new SelectListItem{ Text="Dec",Value="December"}})
+                                @Html.ValidationMessageFor(model => model.educationModels[i].Edu_EndDateMonth)
+
+                                @Html.DropDownListFor(model => model.educationModels[i].Edu_EndDateDay, new List<SelectListItem> {
+                                     new SelectListItem { Text = "Day", Value = "Day" }, new SelectListItem { Text = "1", Value = "1" }, new SelectListItem { Text = "2", Value = "2" }, new SelectListItem { Text = "3", Value = "3" }
+                                   , new SelectListItem { Text = "4", Value = "4" }, new SelectListItem { Text = "5", Value = "5" }, new SelectListItem { Text = "6", Value = "6" }, new SelectListItem { Text = "7", Value = "7" }
+                                   , new SelectListItem { Text = "8", Value = "8" }, new SelectListItem { Text = "9", Value = "9" }, new SelectListItem { Text = "10", Value = "10" }, new SelectListItem { Text = "11", Value = "11" }, new SelectListItem { Text = "12", Value = "12" }
+                                   , new SelectListItem { Text = "13", Value = "13" }, new SelectListItem { Text = "14", Value = "14" }, new SelectListItem { Text = "15", Value = "15" }, new SelectListItem { Text = "16", Value = "16" }
+                                   , new SelectListItem { Text = "17", Value = "17" }, new SelectListItem { Text = "18", Value = "18" }, new SelectListItem { Text = "19", Value = "19" }, new SelectListItem { Text = "20", Value = "20" }
+                                   , new SelectListItem { Text = "21", Value = "21" }, new SelectListItem { Text = "22", Value = "22" }, new SelectListItem { Text = "23", Value = "23" }, new SelectListItem { Text = "24", Value = "24" }
+                                   , new SelectListItem { Text = "25", Value = "25" }, new SelectListItem { Text = "26", Value = "26" }, new SelectListItem { Text = "27", Value = "27" }, new SelectListItem { Text = "28", Value = "28" }
+                                   , new SelectListItem { Text = "29", Value = "29" }, new SelectListItem { Text = "30", Value = "30" }, new SelectListItem { Text = "31", Value = "31" }})
+
+                                @Html.TextBoxFor(model => model.educationModels[i].Edu_EndDateYear, new { placeholder = "Year" })
+                            </td>
+                            <td>
+                                @Html.EditorFor(model => model.educationModels[i].Edu_Location)
+                                @Html.ValidationMessageFor(model => model.educationModels[i].Edu_Location)
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(model => model.educationModels[i].Edu_Confirmed, new List<SelectListItem>{
+  new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"},new SelectListItem{ Text="Result Pending",Value="Result Pending"},new SelectListItem{ Text="Attendance Confirmed",Value="Attendance Confirmed"},new SelectListItem{ Text="Attendance Unconfirmed",Value="Attendance Unconfirmed"},new SelectListItem{ Text="Attendance Result pending",Value="Attendance Result pending"} })
+                                @Html.ValidationMessageFor(model => model.educationModels[i].Edu_Confirmed)
+                            </td>
+                            @*<td>
+            <input type="button" id="AddEdu" value="  Add " onclick="addEdu()" style="width:auto" />
+        </td>*@
+                            <td>
+                                <input type="submit" name="SaveData" value='Delete_Edu_@Model.educationModels[i].id' />
+                                @*<input type="button" value="Delete Row" onclick="RemoveRowEMP(this)" style="width:auto" />*@
+                            </td>
+                        </tr>
+                            }
+                        }
+                        catch
+                        {
+
+                        }
+                    </tbody>
+                </table>
+                <table id="Edu1" class="table">
+                    <tr>
+                        <td>
+                            <select id="Edu_History" name="diligence.educationList[0].Edu_History"><option value="Yes">Yes</option><option value="No">No</option></select>
+                        </td>
+                        <td>
+                            <input type="text" id="Edu_Degree" name="diligence.educationList[0].Edu_Degree" value="" />
+                        </td>
+                        <td>
+                            <input type="text" id="Edu_School" name="diligence.educationList[0].Edu_School" value="" />
+                        </td>
+                        <td>
+                            <input type="text" id="Edu_Major" name="diligence.educationList[0].Edu_Major" value="" />
+                        </td>
+                        <td>
+                            <input type="text" id="Edu_AdditionalInfo" name="diligence.educationList[0].Edu_AdditionalInfo" value="" />
+                        </td>
+                        <td>
+                            <select name="diligence.educationList[0].Edu_GradDateMonth" id="EduGradMonth">
+                                <option value="0">Month</option>
+                                <option value="January">Jan</option>
+                                <option value="February">Feb</option>
+                                <option value="March">Mar</option>
+                                <option value="April">Apr</option>
+                                <option value="May">May</option>
+                                <option value="June">Jun</option>
+                                <option value="July">Jul</option>
+                                <option value="August">Aug</option>
+                                <option value="September">Sep</option>
+                                <option value="October">Oct</option>
+                                <option value="November">Nov</option>
+                                <option value="December">Dec</option>
+                            </select>
+
+                            <select name="diligence.educationList[0].Edu_GradDateDay" id="GdayEdu" onfocus="EduDayFunction('GdayEdu')">
+                                <option value="Day">Day</option>
+                            </select>
+
+                            <select name="diligence.educationList[0].Edu_GradDateYear" id="GyearEdu" onfocus="Eduyearfunction('GyearEdu');">
+                                <option value="Year">Year</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="diligence.educationList[0].Edu_StartDateMonth" id="EduStartMonth">
+                                <option value="0">Month</option>
+                                <option value="January">Jan</option>
+                                <option value="February">Feb</option>
+                                <option value="March">Mar</option>
+                                <option value="April">Apr</option>
+                                <option value="May">May</option>
+                                <option value="June">Jun</option>
+                                <option value="July">Jul</option>
+                                <option value="August">Aug</option>
+                                <option value="September">Sep</option>
+                                <option value="October">Oct</option>
+                                <option value="November">Nov</option>
+                                <option value="December">Dec</option>
+                            </select>
+
+                            <select name="diligence.educationList[0].Edu_StartDateDay" id="SdayEdu" onfocus="EduDayFunction('SdayEdu')">
+                                <option value="Day">Day</option>
+                            </select>
+
+                            <select name="diligence.educationList[0].Edu_StartDateYear" id="SyearEdu" onfocus="Eduyearfunction('SyearEdu');">
+                                <option value="Year">Year</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="diligence.educationList[0].Edu_EndDateMonth" id="EduMonth">
+                                <option value="0">Month</option>
+                                <option value="January">Jan</option>
+                                <option value="February">Feb</option>
+                                <option value="March">Mar</option>
+                                <option value="April">Apr</option>
+                                <option value="May">May</option>
+                                <option value="June">Jun</option>
+                                <option value="July">Jul</option>
+                                <option value="August">Aug</option>
+                                <option value="September">Sep</option>
+                                <option value="October">Oct</option>
+                                <option value="November">Nov</option>
+                                <option value="December">Dec</option>
+                            </select>
+
+                            <select name="diligence.educationList[0].Edu_EndDateDay" id="EdayEdu" onfocus="EduDayFunction('EdayEdu')">
+                                <option value="Day">Day</option>
+                            </select>
+
+                            <select name="diligence.educationList[0].Edu_EndDateYear" id="EyearEdu" onfocus="Eduyearfunction('EyearEdu');">
+                                <option value="Year">Year</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" id="Edu_Location" name="diligence.educationList[0].Edu_Location" value="" />
+
+                        </td>
+                        <td>
+                            <select id="Edu_Confirmed" name="diligence.educationList[0].Edu_Confirmed"><option value="Yes">Yes</option><option value="No">No</option><option value="Result Pending">Result Pending</option><option value="Attendance Confirmed">Attendance Confirmed</option><option value="Attendance Unconfirmed">Attendance Unconfirmed</option><option value="Attendance Result pending">Attendance Result pending</option></select>
+                        </td>
+                        <td>
+                            <input type="button" id="AddEdu" value="  Add " onclick="addEdu()" style="width:auto" />
+                        </td>
+                    </tr>
+                    <script type="text/javascript">
+                        var j;
+                        j = 1;
+                        var m = 10000;
+                        var a = 100000;
+                        var b = 1000000;
+                        var l = 10000000;
+                        var t = 2000;
+                        var o = 5000;                        
+                        function addEdu() {
+                            var myrow = "<tr id='mainrow'><td><select id='Edu_History' name='diligence.educationList[" + j + "].Edu_History'><option value='Yes'>Yes</option></select></td><td><input type='text' id='Edu_Degree' name='diligence.educationList[" + j + "].Edu_Degree' value=''  /></td><td><input type='text' id='Edu_School' name='diligence.educationList[" + j + "].Edu_School' value='' /></td><td><input type='text' id='Edu_Major' name='diligence.educationList[" + j + "].Edu_Major' value='' /></td><td><select id='Edu_AdditionalInfo' name='diligence.educationList[" + j + "].Edu_AdditionalInfo'><option value='No'>No</option><option value='Yes'>Yes</option></select></td><td><select name='diligence.educationList[" + j + "].Edu_GradDateMonth' id=''><option value='0'>Month</option><option value='January'>Jan</option><option value='February'>Feb</option><option value='March'>Mar</option><option value='April'>Apr</option><option value='May'>May</option><option value='June'>Jun</option><option value='July'>Jul</option><option value='August'>Aug</option><option value='September'>Sep</option><option value='October'>Oct</option><option value='November'>Nov</option><option value='December'>Dec</option></select><select name='diligence.educationList[" + j + "].Edu_GradDateDay' id=" + t + "  onfocus='EduDayFunction(" + t + ")'><option value='Day'>Day</option></select><select name='diligence.educationList[" + j + "].Edu_GradDateYear' id=" + o + "  onfocus='Eduyearfunction(" + o + ")'><option value='Year'>Year</option></select></td><td><select name='diligence.educationList[" + j + "].Edu_StartDateMonth' id=''><option value='0'>Month</option><option value='January'>Jan</option><option value='February'>Feb</option><option value='March'>Mar</option><option value='April'>Apr</option><option value='May'>May</option><option value='June'>Jun</option><option value='July'>Jul</option><option value='August'>Aug</option><option value='September'>Sep</option><option value='October'>Oct</option><option value='November'>Nov</option><option value='December'>Dec</option></select><select name='diligence.educationList[" + j + "].Edu_StartDateDay' id=" + m + "  onfocus='EduDayFunction(" + m + ")'><option value='Day'>Day</option></select><select name='diligence.educationList[" + j + "].Edu_StartDateYear' id=" + a + "  onfocus='Eduyearfunction(" + a + ")'><option value='Year'>Year</option></select></td><td><select name='diligence.educationList[" + j + "].Edu_EndDateMonth' id=''><option value='0'>Month</option><option value='January'>Jan</option><option value='February'>Feb</option><option value='March'>Mar</option><option value='April'>Apr</option><option value='May'>May</option><option value='June'>Jun</option><option value='July'>Jul</option><option value='August'>Aug</option><option value='September'>Sep</option><option value='October'>Oct</option><option value='November'>Nov</option><option value='December'>Dec</option></select><select name='diligence.educationList[" + j + "].Edu_EndDateDay' id=" + b + " onfocus='EduDayFunction(" + b + ")'><option value='Day'>Day</option></select><select name='diligence.educationList[" + j + "].Edu_EndDateYear' id=" + l + " onfocus='Eduyearfunction(" + l + ")'><option value='Year'>Year</option></select></td><td><input type='text' id='Edu_Location' name='diligence.educationList[" + j + "].Edu_Location' value='' /></td><td><select id='Edu_Confirmed' name='diligence.educationList[" + j + "].Edu_Confirmed'><option value='Yes'>Yes</option><option value='No'>No</option><option value='Result Pending'>Result Pending</option><option value='Attendance Confirmed'>Attendance Confirmed</option><option value='Attendance Unconfirmed'>Attendance Unconfirmed</option><option value='Attendance Result pending'>Attendance Result pending</option></select></td><td><input type='button' id='Delete' value='Delete' onclick='RemoveEduRows(this)' style='width:auto' /></td></tr>";
+                            $("#Edu1").last().append(myrow);
+                            j = j + 1;
+                            a = a - 1;
+                            b = b + 1;
+                            l = l - 1;
+                            m = m + 1;
+                            t = t + 1;
+                            o = o + 1;
+                        }
+                        function RemoveEduRows(td) {
+                            var row = $(td).closest("tr"); // find <tr> parent
+                            row.remove();
+                        }
+                        function Eduyearfunction(YID) {
+                            for (y = 2030; y >= 1940; y--) {
+                                var optn = document.createElement("OPTION");
+                                optn.text = y;
+                                optn.value = y;
+                                //var av= $(td).options.add(optn);
+                                document.getElementById(YID).options.add(optn);
+                            }
+                        }
+                        function EduDayFunction(DID) {
+                            for (y = 1; y <= 31; y++) {
+                                var optn = document.createElement("OPTION");
+                                optn.text = y;
+                                optn.value = y;
+                                document.getElementById(DID).options.add(optn);
+                            }
+                        }
+                    </script>
+                    <tr class="container" id="mainrow">
+                    </tr>
+                </table>
+                <input type="submit" name="SaveData" value="SaveEduData" />
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" id="PLID">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse5">Professional License Details</a>
+            </h4>
+        </div>
+        <div id="collapse5" class="panel-collapse collapse">
+            <div class="panel-body">
+                <label>
+                    All fields with an asterisk (*) are required before you can "Submit Data" to create a report. The final report will reflect the information as it was entered here. Please be sure to double check spelling and use the correct capitalization/punctionation when entering data.
+                </label>
+                <table id="PLLicense" class="table">
+                    <thead>
+                        <tr>
+                            <th>Has General Professional License</th>
+                            <th>Professional License Type<span style="color:black"> *</span></th>
+                            <th>PL Organization<span style="color:black"> *</span></th>
+                            <th>PL Location</th>
+                            <th>PL Number</th>
+                            <th>PL Start Date</th>
+                            <th>PL End Date</th>
+                            <th>PL Confirmed</th>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align:left">
+                        @try
+                        {
+                            @for (int i = 0; i < Model.pllicenseModels.Count; i++)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.pllicenseModels[i].General_PL_License, new List<SelectListItem>{
+             new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                                        @Html.ValidationMessageFor(model => model.pllicenseModels[i].General_PL_License)
+                                    </td>
+                                    <td>
+                                        @Html.EditorFor(model => model.pllicenseModels[i].PL_License_Type)
+                                        @Html.ValidationMessageFor(model => model.pllicenseModels[i].PL_License_Type)
+                                    </td>
+                                    <td>
+                                        @Html.EditorFor(model => model.pllicenseModels[i].PL_Organization)
+                                        @Html.ValidationMessageFor(model => model.pllicenseModels[i].PL_Organization)
+                                    </td>
+                                    <td>
+                                        @Html.EditorFor(model => model.pllicenseModels[i].PL_Location)
+                                        @Html.ValidationMessageFor(model => model.pllicenseModels[i].PL_Location)
+                                    </td>
+                                    <td>
+                                        @Html.EditorFor(model => model.pllicenseModels[i].PL_Number)
+                                        @Html.ValidationMessageFor(model => model.pllicenseModels[i].PL_Number)
+                                    </td>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.pllicenseModels[i].PL_StartDateMonth, new List<SelectListItem>{
+          new SelectListItem {Text="Month",Value="0"},new SelectListItem{Text="Jan",Value="January"},new SelectListItem{ Text="Feb",Value="February"}
+                                   ,new SelectListItem{ Text="Mar",Value="March"},new SelectListItem{ Text="Apr",Value="April"},new SelectListItem{ Text="May",Value="May"},new SelectListItem{ Text="Jun",Value="June"}
+                                   ,new SelectListItem{ Text="Jul",Value="July"},new SelectListItem{ Text="Aug",Value="August"},new SelectListItem{ Text="Sep",Value="September"},new SelectListItem{ Text="Oct",Value="October"}
+                                   ,new SelectListItem{ Text="Nov",Value="November"},new SelectListItem{ Text="Dec",Value="December"}})
+                                        @Html.ValidationMessageFor(model => model.pllicenseModels[i].PL_StartDateMonth)
+
+                                        @Html.DropDownListFor(model => model.pllicenseModels[i].PL_StartDateDay, new List<SelectListItem> {
+                                             new SelectListItem { Text = "Day", Value = "Day" }, new SelectListItem { Text = "1", Value = "1" }, new SelectListItem { Text = "2", Value = "2" }, new SelectListItem { Text = "3", Value = "3" }
+                                           , new SelectListItem { Text = "4", Value = "4" }, new SelectListItem { Text = "5", Value = "5" }, new SelectListItem { Text = "6", Value = "6" }, new SelectListItem { Text = "7", Value = "7" }
+                                           , new SelectListItem { Text = "8", Value = "8" }, new SelectListItem { Text = "9", Value = "9" }, new SelectListItem { Text = "10", Value = "10" }, new SelectListItem { Text = "11", Value = "11" }, new SelectListItem { Text = "12", Value = "12" }
+                                           , new SelectListItem { Text = "13", Value = "13" }, new SelectListItem { Text = "14", Value = "14" }, new SelectListItem { Text = "15", Value = "15" }, new SelectListItem { Text = "16", Value = "16" }
+                                           , new SelectListItem { Text = "17", Value = "17" }, new SelectListItem { Text = "18", Value = "18" }, new SelectListItem { Text = "19", Value = "19" }, new SelectListItem { Text = "20", Value = "20" }
+                                           , new SelectListItem { Text = "21", Value = "21" }, new SelectListItem { Text = "22", Value = "22" }, new SelectListItem { Text = "23", Value = "23" }, new SelectListItem { Text = "24", Value = "24" }
+                                           , new SelectListItem { Text = "25", Value = "25" }, new SelectListItem { Text = "26", Value = "26" }, new SelectListItem { Text = "27", Value = "27" }, new SelectListItem { Text = "28", Value = "28" }
+                                           , new SelectListItem { Text = "29", Value = "29" }, new SelectListItem { Text = "30", Value = "30" }, new SelectListItem { Text = "31", Value = "31" }})
+
+                                        @Html.TextBoxFor(model => model.pllicenseModels[i].PL_StartDateYear, new { placeholder = "Year" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.pllicenseModels[i].PL_EndDateMonth, new List<SelectListItem>{
+         new SelectListItem {Text="Month",Value="0"},new SelectListItem{Text="Jan",Value="January"},new SelectListItem{ Text="Feb",Value="February"}
+                                  ,new SelectListItem{ Text="Mar",Value="March"},new SelectListItem{ Text="Apr",Value="April"},new SelectListItem{ Text="May",Value="May"},new SelectListItem{ Text="Jun",Value="June"}
+                                  ,new SelectListItem{ Text="Jul",Value="July"},new SelectListItem{ Text="Aug",Value="August"},new SelectListItem{ Text="Sep",Value="September"},new SelectListItem{ Text="Oct",Value="October"}
+                                  ,new SelectListItem{ Text="Nov",Value="November"},new SelectListItem{ Text="Dec",Value="December"}})
+                                        @Html.ValidationMessageFor(model => model.pllicenseModels[i].PL_EndDateMonth)
+
+                                        @Html.DropDownListFor(model => model.pllicenseModels[i].PL_EndDateDay, new List<SelectListItem> {
+                                             new SelectListItem { Text = "Day", Value = "Day" }, new SelectListItem { Text = "1", Value = "1" }, new SelectListItem { Text = "2", Value = "2" }, new SelectListItem { Text = "3", Value = "3" }
+                                           , new SelectListItem { Text = "4", Value = "4" }, new SelectListItem { Text = "5", Value = "5" }, new SelectListItem { Text = "6", Value = "6" }, new SelectListItem { Text = "7", Value = "7" }
+                                           , new SelectListItem { Text = "8", Value = "8" }, new SelectListItem { Text = "9", Value = "9" }, new SelectListItem { Text = "10", Value = "10" }, new SelectListItem { Text = "11", Value = "11" }, new SelectListItem { Text = "12", Value = "12" }
+                                           , new SelectListItem { Text = "13", Value = "13" }, new SelectListItem { Text = "14", Value = "14" }, new SelectListItem { Text = "15", Value = "15" }, new SelectListItem { Text = "16", Value = "16" }
+                                           , new SelectListItem { Text = "17", Value = "17" }, new SelectListItem { Text = "18", Value = "18" }, new SelectListItem { Text = "19", Value = "19" }, new SelectListItem { Text = "20", Value = "20" }
+                                           , new SelectListItem { Text = "21", Value = "21" }, new SelectListItem { Text = "22", Value = "22" }, new SelectListItem { Text = "23", Value = "23" }, new SelectListItem { Text = "24", Value = "24" }
+                                           , new SelectListItem { Text = "25", Value = "25" }, new SelectListItem { Text = "26", Value = "26" }, new SelectListItem { Text = "27", Value = "27" }, new SelectListItem { Text = "28", Value = "28" }
+                                           , new SelectListItem { Text = "29", Value = "29" }, new SelectListItem { Text = "30", Value = "30" }, new SelectListItem { Text = "31", Value = "31" }})
+
+                                        @Html.TextBoxFor(model => model.pllicenseModels[i].PL_EndDateYear, new { placeholder = "Year" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownListFor(model => model.pllicenseModels[i].PL_Confirmed, new List<SelectListItem>{
+            new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"},new SelectListItem{ Text="Result Pending",Value="Result Pending"}})
+                                        @Html.ValidationMessageFor(model => model.pllicenseModels[i].PL_Confirmed)
+                                    </td>
+                                    <td>
+                                        <input type="submit" name="SaveData" value='Delete_PL_@Model.pllicenseModels[i].id' />
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        catch { }
+                    </tbody>
+                </table>
+                <table id="PLLicense1" class="table">
+                    <tr>
+                        <td>
+                            <select name="diligence.plLicenseList[0].General_PL_License" id="General_PL_License" class="General_PL_License"><option value="No">No</option><option value="Yes">Yes</option></select>
+                        </td>
+                        <td>
+                            <input type="text" id="PL_License_Type" name="diligence.plLicenseList[0].PL_License_Type" value="" />
+                        </td>
+                        <td>
+                            <input type="text" id="PL_Organization" name="diligence.plLicenseList[0].PL_Organization" value="" />
+                        </td>
+                        <td>
+                            <input type="text" id="PL_Location" name="diligence.plLicenseList[0].PL_Location" value="" />
+                        </td>
+                        <td>
+                            <input type="text" id="PL_Number" name="diligence.plLicenseList[0].PL_Number" value="" />
+                        </td>
+                        <td>
+                            <select name="diligence.plLicenseList[0].PL_StartDateMonth" id="PLStartMonth">
+                                <option value="0">Month</option>
+                                <option value="January">Jan</option>
+                                <option value="February">Feb</option>
+                                <option value="March">Mar</option>
+                                <option value="April">Apr</option>
+                                <option value="May">May</option>
+                                <option value="June">Jun</option>
+                                <option value="July">Jul</option>
+                                <option value="August">Aug</option>
+                                <option value="September">Sep</option>
+                                <option value="October">Oct</option>
+                                <option value="November">Nov</option>
+                                <option value="December">Dec</option>
+                            </select>
+                            <select name="diligence.plLicenseList[0].PL_StartDateDay" id="SdayPL" onfocus="PLDayFunction('SdayPL')">
+                                <option value="Day">Day</option>
+                            </select>
+                            <select name="diligence.plLicenseList[0].PL_StartDateYear" id="SyearPL" onfocus="PLyearfunction('SyearPL');">
+                                <option value="Year">Year</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="diligence.plLicenseList[0].PL_EndDateMonth" id="PLMonth">
+                                <option value="0">Month</option>
+                                <option value="January">Jan</option>
+                                <option value="February">Feb</option>
+                                <option value="March">Mar</option>
+                                <option value="April">Apr</option>
+                                <option value="May">May</option>
+                                <option value="June">Jun</option>
+                                <option value="July">Jul</option>
+                                <option value="August">Aug</option>
+                                <option value="September">Sep</option>
+                                <option value="October">Oct</option>
+                                <option value="November">Nov</option>
+                                <option value="December">Dec</option>
+                            </select>
+
+                            <select name="diligence.plLicenseList[0].PL_EndDateDay" id="EdayPL" onfocus="PLDayFunction('EdayPL')">
+                                <option value="Day">Day</option>
+                            </select>
+
+                            <select name="diligence.plLicenseList[0].PL_EndDateYear" id="EyearPL" onfocus="PLyearfunction('EyearPL');">
+                                <option value="Year">Year</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="PL_Confirmed" name="diligence.plLicenseList[0].PL_Confirmed"><option value="Yes">Yes</option><option value="No">No</option><option value="Result Pending">Result Pending</option></select>
+                        </td>
+                        <td>
+                            <input type="button" id="AddPLButton" value="  Add " class="Add" onclick="addPL()" style="width:auto" />
+                        </td>
+                    </tr>
+
+                    <script type="text/javascript">
+                        var k;
+                        k = 1;
+                        var m = 10000;
+                        var a = 100000;
+                        var b = 1000000;
+                        var l = 10000000;
+                        function addPL() {
+                            var myrow = "<tr id='mainrow'><td><select id='General_PL_License' name=plLicenseList[" + k + "].General_PL_License'><option value='Yes'>Yes</option></select></td><td><input type='text' id='PL_License_Type' name='diligence.plLicenseList[" + k + "].PL_License_Type' value='' /></td><td><input type='text' id='PL_Organization' name='diligence.plLicenseList[" + k + "].PL_Organization' value='' /></td><td><input type='text' id='PL_Location' name='diligence.plLicenseList[" + k + "].PL_Location' value='' /></td><td><input type='text' id='PL_Number' name='diligence.plLicenseList[" + k + "].PL_Number' value='' /></td><td><select name='diligence.plLicenseList[" + k + "].PL_StartDateMonth' id=''><option value='0'>Month</option><option value='January'>Jan</option><option value='February'>Feb</option><option value='March'>Mar</option><option value='April'>Apr</option><option value='May'>May</option><option value='June'>Jun</option><option value='July'>Jul</option><option value='August'>Aug</option><option value='September'>Sep</option><option value='October'>Oct</option><option value='November'>Nov</option><option value='December'>Dec</option></select><select name='diligence.plLicenseList[" + k + "].PL_StartDateDay' id=" + m + "  onfocus='PLDayFunction(" + m + ")'><option value='Day'>Day</option></select><select name='diligence.plLicenseList[" + k + "].PL_StartDateYear' id=" + a + "  onfocus='PLyearfunction(" + a + ")'><option value='Year'>Year</option></select></td><td><select name='diligence.plLicenseList[" + k + "].PL_EndDateMonth' id=''><option value='0'>Month</option><option value='January'>Jan</option><option value='February'>Feb</option><option value='March'>Mar</option><option value='April'>Apr</option><option value='May'>May</option><option value='June'>Jun</option><option value='July'>Jul</option><option value='August'>Aug</option><option value='September'>Sep</option><option value='October'>Oct</option><option value='November'>Nov</option><option value='December'>Dec</option></select><select name='diligence.plLicenseList[" + k + "].PL_EndDateDay' id=" + b + " onfocus='PLDayFunction(" + b + ")'><option value='Day'>Day</option></select><select name='diligence.plLicenseList[" + k + "].PL_EndDateYear' id=" + l + " onfocus='PLyearfunction(" + l + ")'><option value='Year'>Year</option></select></td><td><select id='PL_Confirmed' name='diligence.plLicenseList[" + k + "].PL_Confirmed'><option value='Yes'>Yes</option><option value='No'>No</option><option value='Result Pending'>Result Pending</option></select></td><td><input type='button' id='Add' value='  Delete ' onclick='RemovePLRows(this)' style='width:auto' /></td></tr>";
+                            $("#PLLicense1").last().append(myrow);
+                            k = k + 1;
+                            a = a - 1;
+                            b = b + 1;
+                            l = l - 1;
+                            m = m + 1;
+                        }
+                        function RemovePLRows(td) {
+                            var row = $(td).closest("tr"); // find <tr> parent
+                            row.remove();
+                        }
+
+                        function PLyearfunction(YID) {
+                            for (y = 2030; y >= 1940; y--) {
+                                var optn = document.createElement("OPTION");
+                                optn.text = y;
+                                optn.value = y;
+                                //var av= $(td).options.add(optn);
+                                document.getElementById(YID).options.add(optn);
+                            }
+                        }
+                        function PLDayFunction(DID) {
+                            for (y = 1; y <= 31; y++) {
+                                var optn = document.createElement("OPTION");
+                                optn.text = y;
+                                optn.value = y;
+                                document.getElementById(DID).options.add(optn);
+                            }
+                        }
+                    </script>
+                </table>
+                <input type="submit" name="SaveData" value="SavePLData" />
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" id="ODID">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse2">Other Details</a>
+            </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">
+                <table style="border-collapse: separate; border-spacing: 10px;">
+                    <tr>
+                        <th>Current Residential Property is owned by subject? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.CurrentResidentialProperty, new List<SelectListItem>{
+                new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Other Current Residential Property is owned by subject? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.OtherCurrentResidentialProperty, new List<SelectListItem>{
+                new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes, only one",Value="Yes, only one"},new SelectListItem {Text="Yes, multiple",Value="Yes, multiple"}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Other Property Ownership information? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.OtherPropertyOwnershipinfo, new List<SelectListItem>{
+                new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Previous Property Ownership Results? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.PrevPropertyOwnershipRes, new List<SelectListItem>{
+                new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes, only one",Value="Yes, only one"},new SelectListItem {Text="Yes, multiple",Value="Yes, multiple"}})
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>Business Affiliations Identified? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.Has_Business_Affiliations, new List<SelectListItem>{
+                            new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Intellectual Property Identified? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.Has_Intellectual_Hits, new List<SelectListItem>{
+                             new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"}})
+                        </td>
+                        <th>Applicant Type :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.ApplicantType, new List<SelectListItem>{
+                             new SelectListItem{Text="Applicant",Value="Applicant"},new SelectListItem {Text="Assignee",Value="Assignee"},new SelectListItem {Text="Inventor",Value="Inventor"}})
+                        </td>
+                        <th>Patent Type :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.PatentType, new List<SelectListItem>{
+                                new SelectListItem{Text="patent",Value="patent"},new SelectListItem {Text="publication",Value="publication"}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Registered with U.S. SEC? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.Has_Reg_US_SEC, new List<SelectListItem>{
+                            new SelectListItem{Text="Not Registered",Value="Not Registered"},new SelectListItem {Text="Yes-With Adverse",Value="Yes-With Adverse"},new SelectListItem{Text="Yes-Without Adverse",Value="Yes-Without Adverse"}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Registered with U.K. FCA? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.Has_Reg_UK_FCA, new List<SelectListItem>{
+new SelectListItem{Text="Not Registered",Value="Not Registered"},new SelectListItem {Text="Yes-With Adverse",Value="Yes-With Adverse"},new SelectListItem{Text="Yes-Without Adverse",Value="Yes-Without Adverse"}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Registered with FINRA? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.Has_Reg_FINRA, new List<SelectListItem>{
+                             new SelectListItem{Text="Not Registered",Value="Not Registered"},new SelectListItem {Text="Yes-With Adverse",Value="Yes-With Adverse"},new SelectListItem{Text="Yes-Without Adverse",Value="Yes-Without Adverse"}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Registered with U.S. NFA? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.Has_Reg_US_NFA, new List<SelectListItem>{
+                            new SelectListItem{Text="Not Registered",Value="Not Registered"},new SelectListItem {Text="Yes-With Adverse",Value="Yes-With Adverse"},new SelectListItem{Text="Yes-Without Adverse",Value="Yes-Without Adverse"}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Registered with HKSFC? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.Registered_with_HKSFC, new List<SelectListItem>{
+                new SelectListItem{Text="Not Registered",Value="Not Registered"},new SelectListItem {Text="Yes-With Adverse",Value="Yes-With Adverse"},new SelectListItem{Text="Yes-Without Adverse",Value="Yes-Without Adverse"}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Any Regulatory Red Flags? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.RegulatoryFlag, new List<SelectListItem>{
+                            new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"},new SelectListItem {Text="No – Medical",Value="No – Medical"}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Has Global Security Hits? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.Global_Security_Hits, new List<SelectListItem>{
+                        new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Has ICIJ Hits? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.ICIJ_Hits, new List<SelectListItem>{
+                        new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Has Bankruptcy Records Hits? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.HasBankruptcyRecHits, new List<SelectListItem>{
+                new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes, Single Record",Value="Yes, Single Record"},new SelectListItem {Text="Yes, Multiple Records",Value="Yes, Multiple Records"}})
+                        </td>
+                        <th>Result pending :</th>
+                        <td>@Html.CheckBoxFor(model => model.otherdetails.HasBankruptcyRecHits_resultpending)</td>
+                    </tr>
+                    <tr>
+                        <th>Has Criminal Record hits? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.Has_CriminalRecHit, new List<SelectListItem>{
+                    new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes, Single Record",Value="Yes, Single Record"},new SelectListItem {Text="Yes, Multiple Records",Value="Yes, Multiple Records"}})
+                        </td>
+                        <th>Result pending :</th>
+                        <td>@Html.CheckBoxFor(model => model.otherdetails.Has_CriminalRecHit_resultpending)</td>
+                    </tr>
+                    <tr>
+                        <th>Has Bureau of Prison Hits? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.Has_Bureau_PrisonHit, new List<SelectListItem>{
+                new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Has Sex Offender Registry Hits? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.Has_Sex_Offender_RegHit, new List<SelectListItem>{
+                new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Has Civil Records? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.Has_Civil_Records, new List<SelectListItem>{
+                    new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes, Single Record",Value="Yes, Single Record"},new SelectListItem {Text="Yes, Multiple Records",Value="Yes, Multiple Records"}})
+                        </td>
+                        <th>Result pending :</th>
+                        <td>@Html.CheckBoxFor(model => model.otherdetails.has_civil_resultpending)</td>
+                    </tr>
+                    <tr>
+                        <th>Has United States Tax Court Hits? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.Has_US_Tax_Court_Hit, new List<SelectListItem>{
+                new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes, Single Record",Value="Yes, Single Record"},new SelectListItem {Text="Yes, Multiple Records",Value="Yes, Multiple Records"}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Has Tax Liens? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.Has_Tax_Liens, new List<SelectListItem>
+                    {
+                     new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes, Single Record",Value="Yes, Single Record"},new SelectListItem{ Text="Yes, Multiple Records",Value="Yes, Multiple Records"}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Has Civil Judgments?</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.Has_Property_Records, new List<SelectListItem>{
+                                                   new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes, Single Record",Value="Yes, Single Record"},new SelectListItem {Text="Yes, Multiple Records",Value="Yes, Multiple Records"}})
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>Has Driving Hits? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.Has_Driving_Hits, new List<SelectListItem>{
+             new SelectListItem {Text="Clear, With Consent",Value="Clear, With Consent"},new SelectListItem{Text="Single Record, with Consent",Value="Single Record, with Consent"},new SelectListItem{Text="Multiple Records, with Consent",Value="Multiple Records, with Consent" }})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Has UCC Filings? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.has_ucc_fillings, new List<SelectListItem>{
+                new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes, Single Record",Value="Yes, Single Record"},new SelectListItem {Text="Yes, Multiple Records",Value="Yes, Multiple Records"}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Was Credit obtained? :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.Was_credited_obtained, new List<SelectListItem>{
+                new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Credit with No Adverse Hits",Value="Credit with No Adverse Hits"},new SelectListItem{ Text="Credit with Adverse Hits",Value="Credit with Adverse Hits"} })
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Press and Media :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.Press_Media, new List<SelectListItem>{
+                        new SelectListItem{Text="No Hits",Value="No Hits"},new SelectListItem {Text="Common name with adverse Hits",Value="Common name with adverse Hits"},new SelectListItem{Text="Common name without adverse Hits",Value="Common name without adverse Hits"},new SelectListItem{Text="High volume with adverse Hits",Value="High volume with adverse Hits"},new SelectListItem{Text="High volume without adverse Hits",Value="High volume without adverse Hits"},new SelectListItem{Text="Standard search with adverse Hits",Value="Standard search with adverse Hits"},new SelectListItem{Text="Standard search without adverse Hits",Value="Standard search without adverse Hits"}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Fama :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.Fama, new List<SelectListItem>{
+                            new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes - Clear",Value="Yes - Clear"},new SelectListItem {Text="Yes - Adverse",Value="Yes - Adverse"}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Executive Summary :</th>
+                        <td>
+                            @Html.DropDownListFor(model => model.otherdetails.Executivesummary, new List<SelectListItem>{
+                        new SelectListItem{Text="No",Value="No"},new SelectListItem {Text="Yes",Value="Yes"}})
+                        </td>
+                    </tr>
+                </table>
+                <input type="submit" name="SaveData" value="SaveOD" />
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse7">Summary Result Table</a>
+            </h4>
+        </div>
+        <div id="collapse7" class="panel-collapse collapse">
+            <div class="panel-body">
+                <label>Summary Table :</label>
+                @Html.DropDownListFor(model => model.summarymodel.Summarytable, new List<SelectListItem>{
+new SelectListItem {Text="No",Value="No"},new SelectListItem{Text="Yes",Value="Yes"}})
+                <div id="sumtab">
+                    <br />
+                    <label>Personal Identification :</label> @Html.DropDownListFor(model => model.summarymodel.personal_Identification, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem{Text="Discrepancy Identified",Value="Discrepancy Identified"}})
+                    <br />
+                    <label>Name and address verification history :</label> @Html.DropDownListFor(model => model.summarymodel.name_add_Ver_History, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem{Text="Discrepancy Identified",Value="Discrepancy Identified"}})
+                    <br />
+                    <label>Social Security Trace & Verification :</label> @Html.DropDownListFor(model => model.summarymodel.social_securitytrace, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem{Text="Discrepancy Identified",Value="Discrepancy Identified"}})
+                    <br />
+                    <label>News Media Searches :</label> @Html.DropDownListFor(model => model.summarymodel.news_media_searches, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"},new SelectListItem{Text="Potentially-Relevant Information",Value="Potentially-Relevant Information"}})
+                    <br />
+                    <label>Department of Foreign Affairs and Trade, Australia :</label> @Html.DropDownListFor(model => model.summarymodel.department_foreign, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>European Union Consolidated List of Persons, Groups, Equity :</label> @Html.DropDownListFor(model => model.summarymodel.european_union, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>HM Treasury Consolidated List of Financial Sanctions Targets (formerly Bank of England Sanctions) :</label> @Html.DropDownListFor(model => model.summarymodel.HM_treasury, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>U.S. Bureau of Industry and Security List of Denied Persons, Entities List and Unverified List :</label> @Html.DropDownListFor(model => model.summarymodel.US_bureau, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>U.S. Department of State Foreign Terrorist Organizations :</label> @Html.DropDownListFor(model => model.summarymodel.US_department, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>U.S. Directorate of Defense Trade Controls Debarred Parties Lists :</label> @Html.DropDownListFor(model => model.summarymodel.US_Directorate, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>U.S. General Services Administration Lists of Parties Excluded from Federal Procurement and Non-Procurement Programs :</label> @Html.DropDownListFor(model => model.summarymodel.US_general, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>U.S. Office of Foreign Assets Control :</label> @Html.DropDownListFor(model => model.summarymodel.US_office, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>United Nations Consolidated Sanctions :</label> @Html.DropDownListFor(model => model.summarymodel.UN_consolidated, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>World Bank List of Ineligible Firms and Individuals :</label> @Html.DropDownListFor(model => model.summarymodel.world_bank_list, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>City of London Police (U.K.) :</label> @Html.DropDownListFor(model => model.summarymodel.city_london_police, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Constabularies of Cheshire, Lancashire, and Devon and Cornwall (U.K.) :</label> @Html.DropDownListFor(model => model.summarymodel.constabularies_cheshire, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Hampshire Police (U.K.) :</label> @Html.DropDownListFor(model => model.summarymodel.hampshire_police, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Hong Kong Police Force :</label> @Html.DropDownListFor(model => model.summarymodel.hong_kong_police, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Interpol :</label> @Html.DropDownListFor(model => model.summarymodel.interpol, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Metropolitan Police Service (U.K.) :</label> @Html.DropDownListFor(model => model.summarymodel.metropolitan_police, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>National Crime Squad :</label> @Html.DropDownListFor(model => model.summarymodel.national_crime, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>North Yorkshire Police (U.K.) :</label> @Html.DropDownListFor(model => model.summarymodel.north_yorkshire_polic, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Nottinghamshire Police (U.K.) :</label> @Html.DropDownListFor(model => model.summarymodel.nottinghamshire_police, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Surrey Police (U.K.) :</label> @Html.DropDownListFor(model => model.summarymodel.surrey_police, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Thames Valley Police (U.K.) :</label> @Html.DropDownListFor(model => model.summarymodel.thames_valley_police, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>U.S. Federal Bureau of Investigation :</label> @Html.DropDownListFor(model => model.summarymodel.US_Federal, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>U.S. Secret Service :</label> @Html.DropDownListFor(model => model.summarymodel.US_secret_service, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Warwickshire Police (U.K.) :</label> @Html.DropDownListFor(model => model.summarymodel.warwickshire_police, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Alberta Securities Commission, Canada :</label> @Html.DropDownListFor(model => model.summarymodel.alberta_securities_commission, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Assets Recovery Agency :</label> @Html.DropDownListFor(model => model.summarymodel.asset_recovery_agency, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Australian Prudential Regulation Authority :</label> @Html.DropDownListFor(model => model.summarymodel.australian_prudential, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Australian Securities and Investments :</label> @Html.DropDownListFor(model => model.summarymodel.australian_securities, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Banque de France, CECEI, France :</label> @Html.DropDownListFor(model => model.summarymodel.banque_de_CECEI, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Banque de France, Commission Bancaire, France :</label> @Html.DropDownListFor(model => model.summarymodel.banque_de_commission, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>British Virgin Islands Financial Services Commission :</label> @Html.DropDownListFor(model => model.summarymodel.british_virgin_islands, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Cayman Islands Monetary Authority :</label> @Html.DropDownListFor(model => model.summarymodel.cayman_islands_monetary, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Commission de Surveillance du Secteur Financier, Luxembourg :</label> @Html.DropDownListFor(model => model.summarymodel.commission_de_surveillance, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Commodity Futures Trading Commission :</label> @Html.DropDownListFor(model => model.summarymodel.commodity_futures, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Council for Financial Activities Control, Brazil :</label> @Html.DropDownListFor(model => model.summarymodel.council_financial_activities, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Departamento de Investigacoes Sobre Narcoticos, Brazil :</label> @Html.DropDownListFor(model => model.summarymodel.departamento_de_investigacoes, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Department of Labour Inspection – Combating Forced Labour, Brazil :</label> @Html.DropDownListFor(model => model.summarymodel.department_labour_inspection, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Federal Deposit Insurance Commission :</label> @Html.DropDownListFor(model => model.summarymodel.federal_deposit, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Federal Reserve Board :</label> @Html.DropDownListFor(model => model.summarymodel.federal_reserve, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Financial Action Task Force :</label> @Html.DropDownListFor(model => model.summarymodel.financial_action_task, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Financial Crimes Enforcement Network :</label> @Html.DropDownListFor(model => model.summarymodel.financial_crimes, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Financial Regulator, Ireland :</label> @Html.DropDownListFor(model => model.summarymodel.financial_regulator_ireland, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Hong Kong Monetary Authority :</label> @Html.DropDownListFor(model => model.summarymodel.hongkong_monetary_authority, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Investment Dealers Association of Canada :</label> @Html.DropDownListFor(model => model.summarymodel.investment_association_Canada, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Investment Management Regulatory :</label> @Html.DropDownListFor(model => model.summarymodel.investment_management_regulatory, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Isle of Man Financial Supervision Commission :</label> @Html.DropDownListFor(model => model.summarymodel.isle_financial_supervision, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Jersey Financial Services Commission :</label> @Html.DropDownListFor(model => model.summarymodel.jersey_financial_commission, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Lloyd’s Insurance Arimbolaet :</label> @Html.DropDownListFor(model => model.summarymodel.lloyd_insurance_arimbolaet, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Monetary Authority of Singapore :</label> @Html.DropDownListFor(model => model.summarymodel.monetary_authority_singapore, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>National Credit Union Administration :</label> @Html.DropDownListFor(model => model.summarymodel.national_credit, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>New York Stock Exchange :</label> @Html.DropDownListFor(model => model.summarymodel.new_york_stock, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Office of the Comptroller of the Currency :</label> @Html.DropDownListFor(model => model.summarymodel.Office_of_comptroller, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Office of the Superintendent of Financial Institutions, Canada :</label> @Html.DropDownListFor(model => model.summarymodel.Office_of_superintendent, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Resolution Trust Corporation :</label> @Html.DropDownListFor(model => model.summarymodel.resolution_trust, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Securities and Exchange Commission, Brazil :</label> @Html.DropDownListFor(model => model.summarymodel.securities_exchange_commission, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Securities and Futures Authority :</label> @Html.DropDownListFor(model => model.summarymodel.securities_futuresauthority, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Swedish Financial Supervisory Authority :</label> @Html.DropDownListFor(model => model.summarymodel.swedish_financial_supervisory, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Swiss Federal Banking Commission :</label> @Html.DropDownListFor(model => model.summarymodel.swiss_federal_banking, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>U.K. Companies House Disqualified Directors :</label> @Html.DropDownListFor(model => model.summarymodel.U_K_companies_disqualified, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>U.S. Court of International Trade :</label> @Html.DropDownListFor(model => model.summarymodel.US_court, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>U.S. Department of Justice :</label> @Html.DropDownListFor(model => model.summarymodel.US_department_justice, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>U.S. Federal Trade Commission :</label> @Html.DropDownListFor(model => model.summarymodel.US_federal_trade, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>U.S. Office of Thrift Supervision :</label> @Html.DropDownListFor(model => model.summarymodel.US_office_thrifts, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                    <label>Central Intelligence Agency - Heads of State/Government :</label> @Html.DropDownListFor(model => model.summarymodel.central_intelligence, new List<SelectListItem>{
+new SelectListItem {Text="Clear",Value="Clear"},new SelectListItem {Text="Records",Value="Records"}})
+                    <br />
+                </div>
+                <input type="submit" name="SaveData" value="SaveSummaryData" />
+            </div>
+        </div>
+    </div>
+</div>
+        <br />
+        <input id="submit" type="submit" name="Submit" value="SubmitData" />
+        // <input type="submit" name="Exit" value="Save_Exit" class="btn btn-danger" />
+        //<button onclick="location.href='@Url.Action("Save_data", "Diligence")'">Save and Exit</button>
+        //<button onclick="location.href='@Url.Action("Save_Page1", "Diligence")'">Save and Next</button>
+    }
+    @if (!(@TempData["message"] is null))
+    {
+        <p class="alert-danger">@TempData["message"].ToString()</p>
+    }
+</div>
+
+
+

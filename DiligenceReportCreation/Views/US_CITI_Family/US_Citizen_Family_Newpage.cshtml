@@ -1,0 +1,193 @@
+﻿@model DiligenceReportCreation.Models.MainModel
+@{
+    ViewData["Title"] = "US_Citizen_Family_Newpage";
+}
+
+<h4>US Citizenship Family Template</h4>
+<head>
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <label>
+        All fields with an asterisk (*) are required before you can "Submit Data" to create a report. The final report will reflect the information as it was entered here. Please be sure to double check spelling and use the correct capitalization/punctionation when entering data.
+    </label>
+    <table id="Family" class="table">
+        <thead>
+            <tr>
+                <th>First Name<span style="color:black"> *</span></th>
+                <th>Middle Name</th>
+                <th>Last Name<span style="color:black"> *</span></th>
+                <th>Applicant Type</th>
+                <th>Adult/Minor</th>
+                <th><input type="button" id="Add" value="  Add " onclick="add()" style="width:auto" /></th>
+            </tr>
+        </thead>
+        <tbody style="text-align:left">
+
+            @try
+            {
+                @for (int i = 0; i < Model.familyModels.Count; i++)
+                {
+                    @if (i == 0)
+                    {
+                        <tr>
+                            <td>
+                                @Html.EditorFor(model => model.familyModels[i].first_name)
+                                @Html.ValidationMessageFor(model => model.familyModels[i].first_name)
+                            </td>
+                            <td>
+                                @Html.EditorFor(model => model.familyModels[i].middle_name)
+                                @Html.ValidationMessageFor(model => model.familyModels[i].middle_name)
+                            </td>
+                            <td>
+                                @Html.EditorFor(model => model.familyModels[i].last_name)
+                                @Html.ValidationMessageFor(model => model.familyModels[i].last_name)
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(model => model.familyModels[i].applicant_type, new List<SelectListItem>{
+            new SelectListItem {Text="Main Applicant",Value="Main Applicant"}})
+                                @Html.ValidationMessageFor(model => model.familyModels[i].applicant_type)
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(model => model.familyModels[i].adult_minor, new List<SelectListItem>{
+            new SelectListItem {Text="Adult",Value="Adult"},new SelectListItem{Text="Minor",Value="Minor"}})
+                                @Html.ValidationMessageFor(model => model.familyModels[i].adult_minor)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit", "US_CITI_Family", new { id = @Model.familyModels[i].Family_record_id })">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td>
+                                @Html.EditorFor(model => model.familyModels[i].first_name)
+                                @Html.ValidationMessageFor(model => model.familyModels[i].first_name)
+                            </td>
+                            <td>
+                                @Html.EditorFor(model => model.familyModels[i].middle_name)
+                                @Html.ValidationMessageFor(model => model.familyModels[i].middle_name)
+                            </td>
+                            <td>
+                                @Html.EditorFor(model => model.familyModels[i].last_name)
+                                @Html.ValidationMessageFor(model => model.familyModels[i].last_name)
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(model => model.familyModels[i].applicant_type, new List<SelectListItem>{
+            new SelectListItem{Text="Husband",Value="Husband"},new SelectListItem{ Text="Wife",Value="Wife"}
+            ,new SelectListItem{ Text="Father",Value="Father"},new SelectListItem{ Text="Mother",Value="Mother"},new SelectListItem{ Text="Daughter",Value="Daughter"},new SelectListItem{ Text="Son",Value="Son"}
+            ,new SelectListItem{ Text="Other",Value="Other"}})
+                                @Html.ValidationMessageFor(model => model.familyModels[i].applicant_type)
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(model => model.familyModels[i].adult_minor, new List<SelectListItem>{
+            new SelectListItem {Text="Adult",Value="Adult"},new SelectListItem{Text="Minor",Value="Minor"}})
+                                @Html.ValidationMessageFor(model => model.familyModels[i].adult_minor)
+                            </td>
+                            @*<td>
+                                    @try{
+                                    <input type="submit" name="SaveData" value='Add/Edit_@Model.familyModels[i].first_name' />
+                                    }
+                                    catch {
+                                <input type="submit" name="SaveData" value='Add/Edit Details' disabled="disabled" />
+                                    }*@
+                            @*<input type="button" value="Delete Row" onclick="RemoveRowEMP(this)" style="width:auto" />*@
+                            @*</td>
+                                <td>
+                                    <input type="submit" name="SaveData" value='Delete_@Model.familyModels[i].Family_record_id' />*@
+                            @*<input type="button" value="Delete Row" onclick="RemoveRowEMP(this)" style="width:auto" />*@
+                            @*</td>*@
+                            <td>
+                                <a href="@Url.Action("Edit", "US_CITI_Family", new { id = @Model.familyModels[i].Family_record_id })">Edit</a>
+                                @*@Html.ActionLink("Edit", "Edit", "IN_CITI_Family", new { @id = @Model.familyModels[i].Family_record_id }, null)*@
+                                @*  @Html.ActionLink("INTL_Citizen_Family_Newpage", "IN_CITI_FamilyController", new { id = @Model.familyModels[i].Family_record_id})*@
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        </tbody>
+    </table>
+    <table id="Family1" class="table">
+        <tr>
+            <td>
+                <input type="text" id="first_name" name="diligence.family[0].first_name" value="" />
+            </td>
+            <td>
+                <input type="text" id="middle_name" name="diligence.family[0].middle_name" value="" />
+            </td>
+            <td>
+                <input type="text" id="last_name" name="diligence.family[0].last_name" value="" />
+            </td>
+            <td>
+                <select id="applicant_type" name="diligence.family[0].applicant_type">
+                    <option value="Husband">Husband</option>
+                    <option value="Wife">Wife</option>
+                    <option value="Father">Father</option>
+                    <option value="Mother">Mother</option>
+                    <option value="Daughter">Daughter</option>
+                    <option value="Son">Son</option>
+                    <option value="Other">Other</option>
+                </select>
+            </td>
+            <td>
+                <select id="adult_minor" name="diligence.family[0].adult_minor">
+                    <option value="Adult">Adult</option>
+                    <option value="Minor">Minor</option>
+                </select>
+            </td>
+            <td>
+                <input type="submit" name="SaveData" value="Add/Edit Details" />
+                @*<input type="button" value="Delete Row" onclick="RemoveRowEMP(this)" style="width:auto" />*@
+            </td>
+            <td>
+                <input type="button" value="Delete Row" onclick="RemoveRows(this)" style="width:auto" />
+            </td>
+        </tr>
+    </table>
+    <script type="text/javascript">
+        var i = 1;
+        var m = 10000;
+        var a = 100000;
+        var b = 1000000;
+        var l = 10000000;
+
+        function add() {
+
+            myrow = "<tr><td><input type='text' id='first_name' name='diligence.family[" + i + "].first_name' value='' /></td><td><input type='text' id='middle_name' name='diligence.family[" + i + "].middle_name' value='' /></td><td><input type='text' id='last_name' name='diligence.family[" + i + "].last_name' value='' /></td><td><select name='diligence.family[" + i + "].applicant_type' id='applicant_type'><option value='Husband'>Husband</option><option value='Wife'>Wife</option><option value='Father'>Father</option><option value='Mother'>Mother</option><option value='Daughter'>Daughter</option><option value='Son'>Son</option></select></td><td><select name='diligence.family[" + i + "].adult_minor' id='adult_minor'><option value='Adult'>Adult</option><option value='Minor'>Minor</option></select></td><td><input type='submit' name='SaveData' value='Add/Edit Details' /></td><td> <input type='button' value='Delete Row' onclick='RemoveRows(this);' style='width:auto'>      </td></tr>";
+
+            $("#Family1").last().append(myrow);
+            i = i + 1;
+            a = a - 1;
+            b = b + 1;
+            l = l - 1;
+            m = m + 1;
+
+        }
+        function RemoveRows(td) {
+            var row = $(td).closest("tr"); // find <tr> parent
+            row.remove();
+        }
+    </script>
+
+    <input type="submit" name="SaveData" value='Save Data' />
+    <input type="submit" name="Submit" value='Submit Data' />
+    @if (!(@TempData["message"] is null))
+    {
+        <p class="alert-danger">@TempData["message"].ToString()</p>
+    }
+}
+
+

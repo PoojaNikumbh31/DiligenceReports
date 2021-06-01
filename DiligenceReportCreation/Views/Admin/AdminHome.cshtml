@@ -1,0 +1,40 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+@model List<DiligenceReportCreation.Models.UserModel>
+@{
+    ViewData["Title"] = "All Users";
+}
+
+    <div class="text-center">
+        <h2 class="nav-link text-dark">Users</h2>
+        @if (!(@TempData["message"] is null))
+        {
+    <p class="alert-danger">@TempData["message"].ToString()</p>}
+
+        <br/>
+        <button onclick="location.href='@Url.Action("AddNewUserform", "Admin")'">Create User</button>
+        <br/>
+
+        <br />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Role</th>
+                    <th>Last Login</th>
+                </tr>
+            </thead>
+            <tbody style="text-align:left">
+
+                @foreach (UserModel user in Model)
+                {
+    <tr>
+        <td><a href="#">@user.Username</a></td>
+        <td>@user.Role</td>
+        <td>@user.LastLogin</td>
+    </tr>            }
+            </tbody>
+        </table>
+    </div>
+
+

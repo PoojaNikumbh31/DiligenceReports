@@ -1,0 +1,32 @@
+﻿@model DiligenceReportCreation.Models.ReportModel
+@{
+    ViewData["Title"] = "Formselection";
+}
+
+
+    <div class="text-center">
+        <h1>Diligence Reports</h1>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <br />
+                <br />
+                <label>Case Number</label>
+                <input type="text" name="CaseNumber" required="required" />
+                <br />
+                <label>Last Name/Company Name</label>
+                <input type="text" name="LastName" required="required" />
+                <br />
+                @*<label>Select Template :</label>
+                <select name="templatetype" id="SelectTemplate"><option value="International DD Individual">International DD Individual</option><option value="International Citizenship Individual">International Citizenship Individual</option><option value="US DD Individual">US DD Individual</option><option value="US PE Individual">US PE Individual</option></select>*@
+                <br />
+
+                <input id="submit" type="submit" name="Submit" value="Search" />
+            </div>
+        }
+        @if (!(@TempData["message"] is null))
+        {
+            <p class="alert-danger">@TempData["message"].ToString()</p>
+        }
+    </div>
